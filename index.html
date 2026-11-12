@@ -1,0 +1,796 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><title>TANAHASHI JAM 2 観戦しおり</title></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Oswald:wght@500;700&display=swap">
+<style>
+/* Layout: 興行パンフレット。リングロープの3色を罫線に、王座戦だけ金。上にタブ、下に縦積みカード */
+:root{
+  --canvas:#F3F1EC;      /* リングのキャンバス */
+  --paper:#FFFFFF;
+  --ink:#16181F;
+  --mute:#5D6170;
+  --line:#16181F;
+  --hair:#D9D6CE;
+  --rope-r:#D7263D;      /* ロープ赤 */
+  --rope-w:#FFFFFF;
+  --rope-b:#1F4FD1;      /* ロープ青 */
+  --gold:#C99A2E;        /* ベルト */
+  --gold-tint:#FBF2DC;
+  --tint:#ECE9E1;
+  --u-tmdk:#C99A2E; --u-hot:#6B2FA3; --u-ue:#0E7C3A; --u-honta:#D7263D; --u-ext:#127A73; --u-legend:#8A6A1F; --u-tw:#1F4FD1;
+  --disp:"Dela Gothic One","Hiragino Sans","Noto Sans JP",sans-serif;
+  --body:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --num:"Oswald","Zen Kaku Gothic New",system-ui,sans-serif;
+  --r:12px; --sh:3px 3px 0 var(--line);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --canvas:#121318;--paper:#1C1E26;--ink:#F1EFEA;--mute:#A6A9B6;--line:#F1EFEA;--hair:#343744;
+  --rope-r:#FF5A6E;--rope-b:#6E93FF;--gold:#E2B654;--gold-tint:#2E2716;--tint:#24262F;
+  --u-tmdk:#E2B654;--u-hot:#B07BE6;--u-ue:#3DBF6E;--u-honta:#FF5A6E;--u-ext:#3CC2B8;--u-legend:#D9B45E;--u-tw:#6E93FF;
+  --sh:3px 3px 0 #000;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --canvas:#121318;--paper:#1C1E26;--ink:#F1EFEA;--mute:#A6A9B6;--line:#F1EFEA;--hair:#343744;
+  --rope-r:#FF5A6E;--rope-b:#6E93FF;--gold:#E2B654;--gold-tint:#2E2716;--tint:#24262F;
+  --u-tmdk:#E2B654;--u-hot:#B07BE6;--u-ue:#3DBF6E;--u-honta:#FF5A6E;--u-ext:#3CC2B8;--u-legend:#D9B45E;--u-tw:#6E93FF;
+  --sh:3px 3px 0 #000;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--canvas);color:var(--ink);font:500 15px/1.75 var(--body);margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+a{color:var(--rope-b);font-weight:700}
+h1,h2,h3,h4{margin:0;text-wrap:balance;line-height:1.35}
+h2{font-family:var(--disp);font-weight:400;font-size:22px}
+h3{font-size:16px;font-weight:900}
+p{margin:0}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+/* hero */
+.hero{background:var(--ink);color:var(--canvas)}
+.hero .wrap{padding-block:22px 18px;display:grid;gap:8px}
+.ropes{height:9px;background:linear-gradient(var(--rope-r) 0 3px,var(--rope-w) 3px 6px,var(--rope-b) 6px 9px)}
+.eyebrow{font:700 12.5px/1.4 var(--num);letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.hero h1{font-family:var(--disp);font-weight:400;font-size:clamp(30px,8.5vw,46px);letter-spacing:.01em;line-height:1.1}
+.hero h1 small{display:block;font-size:.42em;letter-spacing:.06em;opacity:.8;margin-top:6px}
+.facts{display:flex;flex-wrap:wrap;gap:6px 14px;font-weight:700;font-size:14px}
+.facts span{white-space:nowrap}
+/* tabs */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--canvas);border-bottom:2px solid var(--line)}
+.tabs .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;padding-block:7px}
+.tab{appearance:none;font:inherit;color:var(--ink);background:var(--paper);border:2px solid var(--line);border-radius:10px;min-height:44px;font-weight:900;font-size:13.5px;cursor:pointer;padding:4px 0}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--canvas)}
+.tab:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--rope-b);outline-offset:2px}
+main .wrap{padding-block:16px 40px}
+section[role="tabpanel"]{display:grid;gap:14px}
+.card{background:var(--paper);border:2px solid var(--line);border-radius:var(--r);padding:15px;display:grid;gap:10px;box-shadow:var(--sh);min-width:0}
+.card.tint{background:var(--tint);box-shadow:none}
+.lead{color:var(--mute);font-weight:700}
+.small{font-size:13px;color:var(--mute)}
+ul.tidy{margin:0;padding-left:1.2em;display:grid;gap:5px}
+dl.terms{margin:0;display:grid;grid-template-columns:minmax(86px,auto) minmax(0,1fr);gap:7px 12px}
+dl.terms dt{font-weight:900;color:var(--rope-r);font-size:14px}
+dl.terms dd{margin:0;font-size:14px}
+/* timeline */
+.tl{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.tl li{display:grid;grid-template-columns:60px minmax(0,1fr);gap:10px;padding:8px 0;border-top:1px dashed var(--hair)}
+.tl li:first-child{border-top:0}
+.tl b.t{font:700 17px/1.4 var(--num);font-variant-numeric:tabular-nums}
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:700;cursor:pointer}
+.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--rope-r);flex:none}
+/* match cards */
+.match{background:var(--paper);border:2px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
+.match.title{border-color:var(--gold);box-shadow:3px 3px 0 var(--gold)}
+.match.main .mhead{background:var(--ink);color:var(--canvas)}
+.mhead{display:flex;gap:10px;align-items:baseline;padding:10px 14px;background:var(--tint);flex-wrap:wrap}
+.mno{font:700 13px/1 var(--num);letter-spacing:.1em}
+.mtype{font-weight:900;font-size:14px}
+.mrule{margin-left:auto;font-size:12.5px;font-weight:700;opacity:.8}
+.belt{display:inline-block;background:var(--gold);color:#1a1300;font-weight:900;font-size:12px;padding:1px 9px;border-radius:99px}
+.mbody{padding:12px 14px 14px;display:grid;gap:12px}
+.vs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center}
+.side{display:grid;gap:6px;min-width:0}
+.side.r{justify-items:end}
+.vsx{font:400 18px/1 var(--disp);color:var(--rope-r)}
+.chip{appearance:none;font:inherit;color:var(--ink);display:inline-flex;align-items:center;gap:7px;background:var(--paper);border:1.5px solid var(--hair);border-radius:99px;padding:3px 10px 3px 3px;cursor:pointer;font-weight:900;font-size:14px;max-width:100%;text-align:left;line-height:1.3}
+.side.r .chip{flex-direction:row-reverse;padding:3px 3px 3px 10px;text-align:right}
+.chip:hover{border-color:var(--line)}
+.av{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;color:#fff;font:400 14px/1 var(--disp);background:var(--uc,var(--mute))}
+.nk{display:block;font-size:10.5px;font-weight:900;color:var(--rope-r);letter-spacing:.02em;line-height:1.2}
+.nk.big{font-size:12.5px}
+.chip .org{font-weight:700;font-size:11px;color:var(--mute);display:block}
+.teamname{font-size:12px;font-weight:900;color:var(--mute);letter-spacing:.04em}
+.tba{border:2px dashed var(--hair);border-radius:10px;padding:12px;text-align:center;font-weight:900;color:var(--mute)}
+.mtext{display:grid;gap:6px}
+.mtext h4{font-size:13px;color:var(--rope-r);font-weight:900}
+.hint{font-size:12.5px;color:var(--mute);text-align:center}
+/* roster */
+.unitblock{display:grid;gap:8px;padding-bottom:12px;border-bottom:1px dashed var(--hair)}
+.unitblock:last-child{border-bottom:0;padding-bottom:0}
+.udesc{font-size:14px}
+.unitblock h3{display:flex;align-items:center;gap:8px}
+.unitblock h3 i{width:12px;height:12px;border-radius:50%;background:var(--uc);display:inline-block}
+.grid{display:flex;flex-wrap:wrap;gap:6px}
+/* venue map */
+.mapbox{border:2px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.mapbox svg{display:block;width:100%;height:auto}
+.mapbox text{font-family:var(--body);font-weight:900}
+/* glossary */
+.gl{display:grid;gap:8px}
+.eras{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.era{background:var(--paper);border:2px solid var(--line);border-left:8px solid var(--ec);border-radius:var(--r);padding:13px 15px;display:grid;gap:7px;box-shadow:var(--sh)}
+.era .ey{font-size:12px;font-weight:900;color:var(--ec);letter-spacing:.04em}
+.era h3{margin:0}
+.era p{margin:0}
+.era .today{background:var(--tint);border-radius:10px;padding:9px 11px;font-size:14px}
+.era .today b{display:block;font-size:11.5px;color:var(--rope-r);margin-bottom:2px}
+.wn{appearance:none;font:inherit;font-weight:900;color:var(--rope-b);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.gl div{border-top:1px dashed var(--hair);padding-top:8px}
+.gl b{display:block}
+/* omake */
+.omake-btn{appearance:none;font:inherit;width:100%;min-height:50px;border:2px solid var(--line);border-radius:var(--r);background:var(--gold);color:#1a1300;font-weight:900;font-size:15px;cursor:pointer;box-shadow:var(--sh)}
+/* dialog */
+dialog{border:2px solid var(--line);border-radius:16px;padding:0;width:min(560px,calc(100vw - 24px));max-height:calc(100vh - 40px);background:var(--paper);color:var(--ink);box-shadow:5px 5px 0 var(--line)}
+dialog::backdrop{background:rgba(10,10,14,.55)}
+.dlg{display:grid;gap:12px;padding:0 0 16px}
+.dtop{display:flex;gap:12px;align-items:center;padding:16px 16px 12px;background:var(--tint);border-bottom:2px solid var(--line);position:sticky;top:0}
+.dtop .av{width:52px;height:52px;font-size:22px}
+.dtop h3{font-family:var(--disp);font-weight:400;font-size:21px}
+.dtop .en{font:700 12px/1.3 var(--num);letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
+.x{appearance:none;margin-left:auto;align-self:flex-start;border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:50%;width:38px;height:38px;font-size:18px;font-weight:900;cursor:pointer;flex:none}
+.dsec{padding:0 16px;display:grid;gap:6px}
+.dsec h4{font-size:13px;color:var(--rope-r);font-weight:900}
+.pill{display:inline-block;border:1.5px solid var(--uc,var(--line));color:var(--ink);border-radius:99px;padding:0 9px;font-size:12px;font-weight:900}
+.today{background:var(--gold-tint);border:1.5px solid var(--gold);border-radius:10px;padding:10px 12px;font-weight:700}
+.dlinks{padding:0 16px}
+.av.ph{background:var(--tint);overflow:hidden;border:1.5px solid var(--uc)}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.dtop .av.ph{width:72px;height:72px}
+.upl{border-top:1px dashed var(--hair);padding-top:12px}
+.upbtn,.rmbtn{appearance:none;font:inherit;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border:2px solid var(--line);border-radius:10px;font-weight:900;cursor:pointer;background:var(--gold);color:#1a1300;width:fit-content}
+.rmbtn{background:var(--paper);color:var(--ink)}
+.mpic{display:block;width:100%;height:auto;border-bottom:2px solid var(--line)}
+.mup{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px 0}
+.upbtn.sm,.rmbtn.sm{min-height:40px;font-size:13px;padding:0 12px}
+@media (prefers-reduced-motion:no-preference){.tab,.chip{transition:background .12s,border-color .12s}}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">New Japan Pro-Wrestling · Korakuen Hall</div>
+    <h1>TANAHASHI JAM 2<small>by CSテレ朝チャンネル　観戦しおり</small></h1>
+    <div class="facts"><span>11/19（木）</span><span>18:30 試合開始</span><span>17:30 開場</span><span>後楽園ホール</span></div>
+  </div>
+  <div class="ropes" aria-hidden="true"></div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="しおりの章">
+  <div class="wrap">
+    <button class="tab" role="tab" id="t-plan" aria-controls="plan">概要</button>
+    <button class="tab" role="tab" id="t-card" aria-controls="card">カード</button>
+    <button class="tab" role="tab" id="t-roster" aria-controls="roster">選手</button>
+    <button class="tab" role="tab" id="t-venue" aria-controls="venue">会場</button>
+    <button class="tab" role="tab" id="t-guide" aria-controls="guide">入門</button>
+    <button class="tab" role="tab" id="t-history" aria-controls="history">歴史</button>
+  </div>
+</nav>
+
+<main><div class="wrap">
+
+<!-- 概要 -->
+<section id="plan" role="tabpanel" aria-labelledby="t-plan">
+  <div class="card">
+    <h2>TANAHASHI JAMってなに？</h2>
+    <p>新日本プロレスの社長・棚橋弘至さんが、テーマを考えて組んだカードで送る特別興行です。他団体の選手やレジェンドも呼んで、ふだんは見られない顔合わせが並びます。</p>
+    <dl class="terms">
+      <dt>棚橋さん</dt><dd>2026年1月4日の東京ドームでオカダ・カズチカと戦って引退。いまは新日本の社長に専念しています。トレードマークの金髪ロングも切りました。</dd>
+      <dt>第1回</dt><dd>2025年6月29日、愛知県体育館の最後のプロレス興行として開催（4,570人）。メインは棚橋＆丸藤正道 vs 清宮海斗＆大岩陵平で、棚橋さんのハイフライフローで決着。ザック・セイバーJr.がIWGP世界ヘビー級王座を取ったのもこの大会でした。</dd>
+      <dt>今回</dt><dd>約1年5か月ぶりの第2回。会場は後楽園ホールで、CSテレ朝チャンネルの独占生中継があります。</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>今回の見どころ</h3>
+    <ul class="tidy">
+      <li><b>メインでTMDKが真っ二つ</b>：同じユニットのザック＆藤田と、大岩＆ジャクソンが対角に。大岩の隣には第1回でも組んだ清宮海斗（NOAH）</li>
+      <li><b>アックス・ワンの新日本デビュー戦</b>：台湾から来て野毛道場で修業中。相手は海野翔太</li>
+      <li><b>藤波辰爾とウルフアロンが同じコーナー</b>：72歳のレジェンドと、柔道金メダリストのNEVER王者。THE RAMPAGEの武知海青も一緒</li>
+      <li><b>TV王座戦</b>：H.O.Tに入ったシュン・スカイウォーカーの初防衛戦に、矢野通が挑戦</li>
+      <li><b>モンスターランボー</b>：出場選手は当日発表</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>当日の流れ</h3>
+    <ol class="tl">
+      <li><b class="t">17:30</b><span>開場。5階へはエレベーターか階段で。物販はロビーで</span></li>
+      <li><b class="t">18:30</b><span>試合開始。全7試合</span></li>
+      <li><b class="t">20:45</b><span>メイン終了の目安（試合時間しだいで前後します）</span></li>
+      <li><b class="t">あと</b><span>水道橋駅・後楽園駅はどちらも歩いてすぐ。平日夜なので終電の心配はなし</span></li>
+    </ol>
+    <p class="small">開場・開始時刻は新日本プロレス公式の大会ページより。</p>
+  </div>
+
+  <div class="card">
+    <h3>チケット</h3>
+    <dl class="terms">
+      <dt>一般発売</dt><dd>11月8日（日）から（当初の11月3日から変更）</dd>
+      <dt>ロイヤルシート</dt><dd>前売13,500円／当日14,000円（パイプ椅子のリングサイド）</dd>
+      <dt>指定席A</dt><dd>前売10,500円／当日11,000円</dd>
+      <dt>指定席B</dt><dd>前売8,500円／当日9,000円</dd>
+      <dt>立見</dt><dd>南側・東側 前売4,500円／当日5,000円。指定席が売り切れたときだけ発売</dd>
+    </dl>
+    <p class="small">小学生以上はチケットが必要。未就学児は保護者1人につき1人まで、ひざの上ならチケット不要です。</p>
+  </div>
+
+  <div class="card" id="packing">
+    <h3>持ち物チェック</h3>
+    <label class="check"><input type="checkbox" id="c1"><span>チケット（電子チケットならスマホの充電も）</span></label>
+    <label class="check"><input type="checkbox" id="c2"><span>モバイルバッテリー</span></label>
+    <label class="check"><input type="checkbox" id="c3"><span>小さめのカバン（ホール内にコインロッカーはありません）</span></label>
+    <label class="check"><input type="checkbox" id="c4"><span>応援するならタオル（物販でも買えます）</span></label>
+    <label class="check"><input type="checkbox" id="c5"><span>羽織るもの（11月の夜。場内は熱気で暑くなることも）</span></label>
+    <p class="small">チェックはこの端末だけに保存されます。</p>
+  </div>
+
+  <div class="card tint">
+    <h3>会場のお約束</h3>
+    <ul class="tidy">
+      <li>選手への接近・接触・声かけ、入り待ち・出待ちは禁止。プレゼントや手紙の手渡しも控える</li>
+      <li>鳴り物（応援バット・ハリセンなど）と応援幕は禁止</li>
+      <li>混んでいるときのエレベーターは必要な人に譲って、階段も使う</li>
+      <li>チケットに書かれた席で観る。荷物や張り紙での場所取りは禁止</li>
+      <li>場外乱闘が近くに来たら、荷物を持ってすぐ離れる。係員さんの誘導に従う</li>
+    </ul>
+  </div>
+
+  <button class="omake-btn" type="button" data-go="omake">おまけ：棚橋社長のことば と 小ネタ集 →</button>
+</section>
+
+<!-- カード -->
+<section id="card" role="tabpanel" aria-labelledby="t-card" hidden>
+  <div class="card">
+    <h2>対戦カード</h2>
+    <p class="lead">全7試合。選手名をタップするとプロフィールが開きます。</p>
+  </div>
+  <div id="matches" style="display:grid;gap:14px"></div>
+  <p class="small">試合順は発表時点のものです。当日変わることがあります。</p>
+</section>
+
+<!-- 選手 -->
+<section id="roster" role="tabpanel" aria-labelledby="t-roster" hidden>
+  <div class="card">
+    <h2>出場選手</h2>
+    <p class="lead">所属・ユニットごとに並べています。名前をタップでプロフィール。</p>
+  </div>
+  <div class="card" id="units"></div>
+  <div class="card">
+    <h3>今日は出なさそうなユニット：Unbound Co.</h3>
+    <p>翌日11月20日（金）の後楽園は、Unbound Co.が初めて自分たちでプロデュースする『Bound for Unbound』（18:30開始）。ユニットごとそちらに出ると見られます。公式にも「今大会はレギュラー参戦選手の出場がない可能性」と書かれています。</p>
+    <dl class="terms">
+      <dt>どんなユニット</dt><dd>2026年1月5日、辻陽太が発表。LIJから派生した無所属勢と、BULLET CLUBのWar Dogsが合併してできた</dd>
+      <dt>メンバー</dt><dd>辻陽太、鷹木信悟、石森太二、ロビー・エックス、ドリラ・モロニー、永井大貴、外道、OSKAR、YUTO-ICE、ジェフ・コブ（新日本公式の選手一覧より）</dd>
+      <dt>持っているベルト</dt><dd>IWGPヘビー級（辻）、IWGPタッグ（OSKAR＆YUTO-ICEのKnock Out Brothers、10月6日に奥還）、NEVER 6人タッグ（K.O.B＆コブ、10月12日に獲得）</dd>
+      <dt>今日とのつながり</dt><dd>辻は10月12日に大岩の挑戦を退けたIWGP王者。YUTO-ICEとOSKARは1.4のランボーにも出ていました</dd>
+      <dt>翌日のカード</dt><dd>発表済みは「永井大貴 vs ドリラ・モロニー」の弟子と師匠のシングルマッチ（10月時点）</dd>
+    </dl>
+  </div>
+  <div class="card">
+    <h3>発表カードにいないユニット：UNITED EMPIRE</h3>
+    <p>ウィル・オスプレイが作ったユニット。発表済みのカードには1人も入っていません。ただ、日本に残っているメンバーはモンスターランボーで出てくるかも。巨漢のグレート-O-カーンやHENAREは「モンスター」の名にも合いそうです</p>
+    <dl class="terms">
+      <dt>メンバー</dt><dd>カラム・ニューマン、グレート-O-カーン、HENARE、ジェイク・リー、ジェイコブ・オースティン・ヤング、アンドラデ・エル・イドロ、ウィル・オスプレイ、フランシスコ・アキラ、ゼイン・ジェイ（新日本公式の選手一覧より）</dd>
+    </dl>
+  </div>
+  <div class="card tint">
+    <h3>ユニットの早見表</h3>
+    <dl class="terms">
+      <dt>TMDK</dt><dd>ザック・セイバーJr.が率いる、技巧派のユニット。今回はメインでメンバー同士が対角に立ちます。</dd>
+      <dt>H.O.T</dt><dd>HOUSE OF TORTURE。凶器・乱入・反則なんでもありの極悪ユニット。ブーイングして楽しむのが正解です。</dd>
+      <dt>本隊</dt><dd>どのユニットにも属さない新日本の正規軍。</dd>
+      <dt>Unbound Co.</dt><dd>IWGP王者・辻陽太らのユニット。今日は出場なしの見込み（上を参照）。</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- 会場 -->
+<section id="venue" role="tabpanel" aria-labelledby="t-venue" hidden>
+  <div class="card">
+    <h2>わたしたちの席</h2>
+    <p style="font-size:20px;font-weight:900;margin:.2em 0">指定席B　南側 R列 30〜34番</p>
+    <p>5人並び・最後列。南側は会場の正面で、勝ち名乗りやベルト授与はこっちを向いて行われます。新日本は北側にビジョンを出すので、試合とビジョンを同じ向きで見られます。</p>
+    <ul>
+      <li>後ろに人がいないので、盛り上がっても気をつかわなくてOK</li>
+      <li>会場全体を見渡せるので、ランボーの入場も全部追えます</li>
+      <li>背もたれ付きの固定イス。背中側が壁なので上着や荷物を置きやすいかも</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h2>後楽園ホール</h2>
+    <p>1962年にボクシング会場として生まれた「格闘技の聖地」。黄色いビルの5階にあって、約1,800人入るコンパクトなホールです。どの席からでもリングが近いのが魅力。</p>
+    <dl class="terms">
+      <dt>住所</dt><dd>文京区後楽1-3-61（東京ドームシティ内）</dd>
+      <dt>最寄り駅</dt><dd>JR総武線・都営三田線の水道橋駅、東京メトロ丸ノ内線・南北線の後楽園駅から歩いて4分</dd>
+      <dt>上がり方</dt><dd>後楽園ホールビルの5階。1階からエレベーター（3基）か階段で。混雑時は新日本からも階段の利用をお願いされています</dd>
+      <dt>当日券</dt><dd>出る場合は1階の黄色いチケットボックスで</dd>
+      <dt>荷物</dt><dd>ホール内にコインロッカーはありません。東京ドームシティのロッカーを使います</dd>
+    </dl>
+  </div>
+
+  <div class="card">
+    <h3>座席のイメージ</h3>
+    <div class="mapbox">
+      <svg viewBox="0 0 480 420" role="img" aria-label="後楽園ホールの簡易図。南側が正面のひな壇、北側にビジョンと入場口、東西にもひな壇がある">
+        <rect width="480" height="420" fill="var(--canvas)"/>
+        <rect x="70" y="18" width="340" height="62" rx="8" fill="var(--tint)" stroke="var(--line)" stroke-width="2"/>
+        <text x="240" y="44" text-anchor="middle" font-size="15" fill="var(--ink)">北側（ビジョン・入場口）</text>
+        <text x="240" y="66" text-anchor="middle" font-size="12" fill="var(--mute)">入退場が近いのは北側の両端</text>
+        <path d="M150 80 L 200 140 M330 80 L 280 140" stroke="var(--rope-r)" stroke-width="3" stroke-dasharray="6 5" fill="none"/>
+        <rect x="18" y="110" width="58" height="200" rx="8" fill="var(--tint)" stroke="var(--line)" stroke-width="2"/>
+        <text x="47" y="205" text-anchor="middle" font-size="14" fill="var(--ink)">西</text>
+        <text x="47" y="224" text-anchor="middle" font-size="11" fill="var(--mute)">ひな壇</text>
+        <rect x="404" y="110" width="58" height="200" rx="8" fill="var(--tint)" stroke="var(--line)" stroke-width="2"/>
+        <text x="433" y="205" text-anchor="middle" font-size="14" fill="var(--ink)">東</text>
+        <text x="433" y="224" text-anchor="middle" font-size="11" fill="var(--mute)">ひな壇</text>
+        <rect x="100" y="104" width="280" height="212" rx="6" fill="var(--paper)" stroke="var(--hair)" stroke-width="2"/>
+        <text x="240" y="124" text-anchor="middle" font-size="11" fill="var(--mute)">リングサイド（平らなフロアのイス席）</text>
+        <rect x="170" y="140" width="140" height="140" fill="var(--canvas)" stroke="var(--line)" stroke-width="2"/>
+        <rect x="178" y="148" width="124" height="124" fill="none" stroke="var(--rope-r)" stroke-width="3"/>
+        <rect x="184" y="154" width="112" height="112" fill="none" stroke="var(--hair)" stroke-width="3"/>
+        <rect x="190" y="160" width="100" height="100" fill="none" stroke="var(--rope-b)" stroke-width="3"/>
+        <text x="240" y="215" text-anchor="middle" font-size="16" fill="var(--ink)">リング</text>
+        <rect x="70" y="330" width="340" height="74" rx="8" fill="var(--gold-tint)" stroke="var(--gold)" stroke-width="2.5"/>
+        <text x="240" y="360" text-anchor="middle" font-size="16" fill="var(--ink)">南側（正面のひな壇）</text>
+        <text x="240" y="384" text-anchor="middle" font-size="12" fill="var(--mute)">勝ち名乗り・ベルト授与はこっち向き</text>
+      </svg>
+    </div>
+    <ul class="tidy">
+      <li><b>南側</b>が正面。勝者の手上げやタイトル戦のセレモニーは南を向いて行われます。全体を見渡すならここ</li>
+      <li><b>北側</b>には演出用のビジョンと入場口。入退場を間近で見たいなら北側リングサイドの両端</li>
+      <li><b>リングサイド</b>は平らなフロアなので、リングを見上げる形。前の人の頭はそこまで気にならないと言われます</li>
+      <li>ひな壇の後ろのバルコニー（立見）は、開放されない大会も多いです</li>
+    </ul>
+    <p class="small">座席表は基本パターンで、大会ごとに変わることがあります。</p>
+  </div>
+
+  <div class="card tint">
+    <h3>ロビーと売店</h3>
+    <ul class="tidy">
+      <li>入ってすぐのロビーで、パンフレットやグッズの物販</li>
+      <li>売店の名物は、かつサンドとファイターチキン。ビールやレモンサワーを片手に観るのも後楽園らしさ</li>
+      <li>壁のポスターで、ほかの団体の大会日程もチェックできます</li>
+      <li>館内の喫煙所は閉鎖中（新日本の後楽園大会の案内より）。飲みすぎ注意のお願いも出ています</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 入門 -->
+<section id="guide" role="tabpanel" aria-labelledby="t-guide" hidden>
+  <div class="card">
+    <h2>プロレス入門</h2>
+    <p class="lead">これだけ知っていれば、今日の7試合は楽しめます。</p>
+  </div>
+  <div class="card">
+    <h3>予習におすすめの動画・本</h3>
+  </div>
+  <div class="card">
+    <h3>勝ち方</h3>
+    <dl class="terms">
+      <dt>フォール</dt><dd>相手の両肩をマットにつけて、レフェリーが3つ数えたら勝ち。2.9で返すのが盛り上がりどころ</dd>
+      <dt>ギブアップ</dt><dd>関節技や絞め技で「参った」を言わせる。ロープに触れば技を外さないといけない（ロープブレイク）</dd>
+      <dt>レフェリーストップ</dt><dd>危ないと判断されたらレフェリーが止める。第1回JAMでザックがベルトを取ったのもこれ</dd>
+      <dt>KO・TKO</dt><dd>10カウント以内に立てなければノックアウト。セコンドがタオルを投げ入れればテクニカルノックアウト</dd>
+      <dt>反則・リングアウト</dt><dd>急所・のど・パンチ・かみつき・凶器などは反則。レフェリーが5つ数える前にやめれば反則負けにはならないけど、ひどいと一発で反則負けも。場外に20カウント以上いると負け</dd>
+      <dt>時間切れ</dt><dd>試合ごとに制限時間（30分一本勝負など）があって、決着がつかなければ引き分け</dd>
+    </dl>
+  </div>
+  <div class="card">
+    <h3>今日の試合形式</h3>
+    <dl class="terms">
+      <dt>シングル</dt><dd>1対1。第1試合のデビュー戦がこれ</dd>
+      <dt>タッグ</dt><dd>リングに入れるのは各チーム1人ずつ。コーナーで手をタッチして交代。6人タッグ・8人タッグも同じしくみで、誰か1人がフォールかギブアップを取ればチームの勝ち</dd>
+      <dt>ランボー</dt><dd>新日本では1分ごとに選手が入ってくる時間差のバトルロイヤル。トップロープを越えて落ちたり、フォールされたりすると脱落していき、最後に残った人が勝ち。モンスターランボーの出場選手は当日発表</dd>
+      <dt>タイトル戦</dt><dd>ベルトをかけた試合。今日はNJPW WORLD認定TV王座戦（15分一本勝負）。勝てば王座移動、王者が勝てば防衛</dd>
+    </dl>
+  </div>
+  <div class="card">
+    <h3>新日本のおもなベルト</h3>
+    <dl class="terms">
+      <dt>IWGPヘビー</dt><dd>団体の最高峰。いまの王者は辻陽太（10月に大岩の挑戦を退けた）</dd>
+      <dt>IWGP GLOBAL</dt><dd>もう1本のヘビー級王座。今年6月に海野翔太が初めて巻いたベルト</dd>
+      <dt>NEVER無差別級</dt><dd>体重無差別の激闘系王座。王者はウルフアロン</dd>
+      <dt>TV王座</dt><dd>15分の制限時間で戦う王座。今日かけられるのがこれ（王者シュンは第11代）</dd>
+    </dl>
+  </div>
+  <div class="card tint">
+    <h3>観戦の楽しみ方</h3>
+    <ul class="tidy">
+      <li>好きな選手の名前を叫んでOK。入場曲で手拍子するとすぐ溶け込めます</li>
+      <li>悪役（ヒール）にはブーイングで応えるのも楽しみ方のひとつ。H.O.Tの試合ではとくに</li>
+      <li>フォールの「ワン！ツー！」は一緒に数えると盛り上がります</li>
+      <li>選手ごとのおなじみのコールもあります。今日なら矢野の「Y！T！R！」、藤波さんへの「ドラゴン！」。選手のプロフィールに書いてあります</li>
+      <li>試合後のマイク（リング上のスピーチ）とバックステージのコメントで次の物語が始まることも</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>用語集</h3>
+    <div class="gl">
+      <div><b>ベビーフェイス／ヒール</b>正統派の善玉と、反則も辞さない悪役</div>
+      <div><b>ユニット</b>選手同士のチーム・派閥。同じユニットの仲間がセコンドについたり助けに入ったりします</div>
+      <div><b>ヘビー級／ジュニアヘビー級</b>新日本では体重100kg以上がヘビー級、100kg未満がジュニア。藤田晃生はジュニアの選手です</div>
+      <div><b>ヤングライオン</b>新日本の若手。黒いパンツとシューズで、先輩の世話をしながら修業中</div>
+      <div><b>野毛道場</b>新日本の合宿所兼練習場。アックス・ワンもここで練習してきました</div>
+      <div><b>花道</b>控室からリングまでの入退場の通り道</div>
+      <div><b>エプロン</b>ロープの外側、リングのふちの部分</div>
+      <div><b>場外</b>リングの外。場外乱闘はここで起きます</div>
+      <div><b>介入・乱入</b>試合に関係ない選手が割って入ること。H.O.Tのお家芸</div>
+      <div><b>フィニッシュホールド</b>その選手の決め技。これが出たら決着が近い合図</div>
+    </div>
+  </div>
+</section>
+
+<!-- おまけ -->
+<section id="history" role="tabpanel" aria-labelledby="t-history" hidden>
+  <div class="card">
+    <h2>プロレスと新日本の歴史</h2>
+    <p class="lead">力道山から、今日の後楽園まで。選手名をタップするとプロフィールが開きます。</p>
+  </div>
+  <div class="card">
+    <h3>そもそも、プロレスってなに？</h3>
+    <p>勝ち負けを争う格闘技ですが、相手の技を<b>あえて受けて</b>、その強さを見せ合う「受けの美学」がある、ちょっと特別な競技です。</p>
+    <p>正義役の<b>ベビーフェイス</b>と悪役の<b>ヒール</b>がいて、試合と試合のあいだにも因縁やストーリーが続いていきます。だから「誰が勝つか」と同じくらい、「なぜこの2人が戦うのか」が面白いんです。</p>
+  </div>
+  <ol class="eras">
+    <li class="era" style="--ec:var(--rope-b)"><span class="ey">1953〜</span><h3>戦後、力道山の時代</h3><p>1953年、力道山が日本プロレスを旗揚げ。</p><p>街頭テレビで、大きな外国人レスラーを空手チョップでなぎ倒す姿に日本中が熱狂しました。戦後の日本人を元気づけた国民的ヒーローで、日本のプロレスはここから始まります。</p><p>1963年に力道山が亡くなったあとは、アントニオ猪木とジャイアント馬場の二枚看板の時代へ。</p></li>
+    <li class="era" style="--ec:var(--rope-r)"><span class="ey">1972</span><h3>新日本プロレスの誕生</h3><p>1972年3月6日、猪木が大田区体育館で新日本プロレスを旗揚げ。同じ年に馬場が全日本プロレスを作り、ライバル団体の時代が始まります。</p><p>猪木のテーマは「ストロングスタイル」と「プロレスこそ最強」。モハメド・アリとの異種格闘技戦（1976年）など、プロレスの枠を超えた挑戦を続けました。今の新日本のキーワード「闘魂」も猪木から来ています。</p><p class="today"><b>今日のカードだと</b><button type="button" class="wn" data-w="fujinami">藤波辰爾</button>は、この旗揚げメンバーのひとり。</p></li>
+    <li class="era" style="--ec:var(--gold)"><span class="ey">1970年代後半〜80年代</span><h3>ゴールデンタイムの黄金期</h3><p>テレビ朝日の『ワールドプロレスリング』が金曜夜8時に放送され、視聴率20%超えも当たり前の時代。</p><p>初代タイガーマスク（佐山聡）の空中殺法に子どもたちも夢中になりました。</p><p>1982年、長州力が藤波に「俺はお前の噛ませ犬じゃない」と反旗をひるがえし、「名勝負数え唄」と呼ばれる抗争がスタート。</p><p class="today"><b>今日のカードだと</b><button type="button" class="wn" data-w="fujinami">藤波さん</button>は、まさにこの時代の主役です。</p></li>
+    <li class="era" style="--ec:var(--u-tmdk)"><span class="ey">1990年代</span><h3>闘魂三銃士とドームの時代</h3><p>武藤敬司・蝶野正洋・橋本真也の「闘魂三銃士」が新日本の顔に。</p><p>東京ドーム大会や、真夏の最強決定戦『G1 CLIMAX』（1991年〜）が始まり、会場は超満員の時代でした。</p><p class="today"><b>今日のカードだと</b>第3試合の<button type="button" class="wn" data-w="kojima">小島</button>と<button type="button" class="wn" data-w="nagata">永田</button>は、この時代にデビューしました。</p></li>
+    <li class="era" style="--ec:var(--mute)"><span class="ey">2000年代</span><h3>冬の時代と第三世代</h3><p>PRIDEやK-1など総合格闘技のブームに押され、プロレス人気は急落。</p><p>格闘技路線に揺れるなか、武藤は全日本へ、橋本はZERO-ONEへ、長州はWJへと、看板選手が次々に新日本を離れました。</p><p>お客さんが減ったこの時代にリングを守り続けたのが、永田・中西・天山・小島の「第三世代」です。</p><p class="today"><b>今日のカードだと</b>第3試合の<button type="button" class="wn" data-w="nagata">永田</button>・<button type="button" class="wn" data-w="kojima">小島</button>がこの世代。小島は今年8月、盟友・天山の引退試合で相手を務めました。</p></li>
+    <li class="era" style="--ec:var(--u-honta)"><span class="ey">2000年代後半〜2010年代</span><h3>棚橋弘至による再興</h3><p>「チャラい」とブーイングされながらも、明るく分かりやすいプロレスとファンサービスでお客さんを呼び戻したのが、「100年に1人の逸材」棚橋弘至。地方のプロモーションにも自ら回り、決めゼリフは「愛してまーす！」。</p><p>2012年にブシロードが親会社になり、同じ年にオカダ・カズチカが凱旋。「レインメーカー」オカダと棚橋のライバル物語で、新日本はV字回復しました。</p><p class="today"><b>今日のカードだと</b>その棚橋が、今は社長としてこの大会をプロデュースしています。</p></li>
+    <li class="era" style="--ec:var(--u-hot)"><span class="ey">2019〜</span><h3>コロナ禍とAEWの誕生</h3><p>2019年、アメリカに新団体AEWが誕生。新日本で活躍したケニー・オメガらが移籍しました。</p><p>2020年からのコロナ禍では、無観客試合や声出し禁止が続き、拍手だけで応援する時代に。</p><p>2024年にはオカダやウィル・オスプレイもAEWへ。一方で合同興行「Forbidden Door」のように、団体の垣根を越えた交流も生まれています。</p><p class="today"><b>今日のカードだと</b>来年1月4日の東京ドームでは、AEWのケニーがIWGPヘビー級王座に挑みます。</p></li>
+    <li class="era" style="--ec:var(--u-ext)"><span class="ey">2020年代〜いま</span><h3>新世代の台頭</h3><p>2026年1月4日、棚橋は東京ドームでオカダとの引退試合に敗れ、リングを降りました。</p><p>「エース不在」と言われるなか、海野・成田らの「令和闘魂三銃士」、上村、大岩、藤田など、新日本生え抜きの若い世代が主役の座を争っています。今年のG1は大岩と上村の生え抜き決勝で、大岩が初優勝。</p><p class="today"><b>今日のカードだと</b>メインの<button type="button" class="wn" data-w="oiwa">大岩</button>・<button type="button" class="wn" data-w="fujita">藤田</button>、第5試合の<button type="button" class="wn" data-w="uemura">上村</button>・<button type="button" class="wn" data-w="narita">成田</button>、第2試合の<button type="button" class="wn" data-w="umino">海野</button>。まさに「次の主役は誰だ？」の真っ只中です。大岩・上村・藤田、そして第3試合の<button type="button" class="wn" data-w="yoh">YOH</button>は、1.4東京ドームでの大一番も決まっています。</p></li>
+  </ol>
+  <div class="card">
+    <h2>今日来てくれる他団体</h2>
+    <p class="lead">メインと第5試合には、ノアとDDTからも選手が参戦します。</p>
+  </div>
+  <div class="era" style="--ec:var(--u-ext)"><span class="ey">2000年〜</span><h3>プロレスリング・ノア</h3>
+    <p>2000年、三沢光晴らが全日本プロレスから独立して旗揚げした団体。名前は「ノアの方舟」から来ています。</p>
+    <p>全日本時代から受け継いだ、大技を真っ向から受け止め合う激しいプロレスが持ち味。最高峰のベルトはGHCヘビー級王座です。</p>
+    <p class="today"><b>今日のカードだと</b>メインの<button type="button" class="wn" data-w="kiyomiya">清宮海斗</button>はノアの看板選手。<button type="button" class="wn" data-w="oiwa">大岩</button>はノアで修業していた時期があり、清宮はそのときの恩人です。</p></div>
+  <div class="era" style="--ec:var(--u-tmdk)"><span class="ey">1997年〜</span><h3>DDTプロレスリング</h3>
+    <p>1997年に旗揚げ。正式名は「Dramatic Dream Team」。笑いあり、仕掛けありのエンターテインメント色が強く、「文化系プロレス」と呼ばれています。</p>
+    <p>本屋やキャンプ場などリングの外で戦う「路上プロレス」や、人形がレスラーとして戦うなど、型破りな企画でも有名。それでいて実力派の選手も多く、両国国技館での大会も開いています。今はノアと同じグループの団体です。</p>
+    <p class="today"><b>今日のカードだと</b>メインの<button type="button" class="wn" data-w="masada">正田壮史</button>と、第5試合の<button type="button" class="wn" data-w="takechi">武知海青</button>がDDT所属。武知はTHE RAMPAGEのパフォーマーとの「二刀流」です。</p></div>
+</section>
+
+<section id="omake" role="tabpanel" aria-label="おまけ" hidden>
+  <div class="card">
+    <h2>おまけ：小ネタ集</h2>
+    <p class="lead">知っていると、ちょっとニヤッとできる話。</p>
+  </div>
+  <div class="card">
+    <h3>棚橋社長のことば（カード発表のコメントより）</h3>
+    <p>「普段とは異なる顔合わせで、選手の新たな魅力を引き出すタッグマッチ2試合。さらにNJPW WORLD認定TV選手権もやっちゃいます！ここ最近の矢野通に頼もしさを感じているのは、僕だけじゃないはず！」</p><p>「選手同士の化学反応、そして新たに広がる可能性。それぞれの熱い闘いにご期待ください！そして最後に、藤波さん、ありがとうございます！」</p>
+  </div>
+  <div class="card">
+    <h3>小ネタ</h3>
+    <ul class="tidy">
+      <li><b>同期対決</b>：藤田晃生と大岩陵平は2021年8月24日、同じ日に後楽園でデビュー。そのデビュー戦の相手同士でした（10分引き分け）。今回はメインで対角</li>
+      <li><b>第1回の続き</b>：大岩と清宮は第1回JAMのメインで組んで、棚橋＆丸藤に敗れました。大岩はNOAH修業中、清宮の相棒でした</li>
+      <li><b>ズッ友</b>：藤田と正田壮史（DDT）は「ズッ友」を名乗る大の仲良し。藤田は前から正田を新日本に連れてきたいと話していました</li>
+      <li><b>武知と正田</b>：武知海青の2024年のデビュー戦で、相手チームにいたのが正田。今日は別の試合です</li>
+      <li><b>ウルフと成田</b>：ウルフアロンは2月に成田蓮にNEVER王座を取られ、6月に取り返した因縁。8人タッグで再び同じリングに</li>
+      <li><b>海野と成田</b>：同じ2017年デビューで、成田のデビュー戦の相手は海野。2023年末に成田が海野を裏切ってH.O.T入りしました</li>
+      <li><b>G1をヘッドロックで</b>：大岩は今年のG1決勝で上村優也を破って初優勝。決め手は古典技のヘッドロックで、史上最短キャリアの制覇でした</li>
+      <li><b>夏男の角</b>：大岩の入場の角（つの）は、天山広吉さんから贈られたもの。「令和の夏男」を受け継いでいます</li>
+      <li><b>THE RAMPAGEの生パフォーマンス</b>：1月4日の東京ドームでは、武知の入場でTHE RAMPAGEがサプライズで踊りました</li>
+      <li><b>藤波さん55周年</b>：11月6日のDRADITION後楽園の55周年試合は、藤波＆ザック vs ウルフ＆松本達哉。今日はウルフと同じコーナーで、ザックは別の試合</li>
+      <li><b>矢野の自己紹介</b>：「誰も知らない」と挑発された翌日、矢野は「スポンサー企業のみなさまをこよなく愛し、地域振興に勤しむプロレスラー、矢野通でございました。以後、お見知りおきを」</li>
+      <li><b>武知のラブコール</b>：2025年11月19日の『粛清の夜』でH.O.Tと戦ったあと、棚橋社長にラブコール。それで1月のドーム出場が決まりました。今日はそのちょうど1年後</li>
+    </ul>
+  </div>
+  <button class="omake-btn" type="button" data-go="plan">← 概要にもどる</button>
+</section>
+
+</div></main>
+
+<dialog id="dlg" aria-labelledby="d-name">
+  <div class="dlg" id="dlg-body"></div>
+</dialog>
+
+<script>
+(function(){
+var U={tmdk:{n:'TMDK',c:'--u-tmdk'},hot:{n:'H.O.T',c:'--u-hot'},honta:{n:'新日本 本隊',c:'--u-honta'},ext:{n:'他団体',c:'--u-ext'},legend:{n:'レジェンド',c:'--u-legend'},tw:{n:'台湾から修業中',c:'--u-tw'},ue:{n:'UNITED EMPIRE',c:'--u-ue'},cand:{n:'ランボー出場予想',c:'--gold'}};
+function NJ(id){return {t:'新日本プロレス公式プロフィール',u:'https://www.njpw.co.jp/profile/'+id};}
+var W={
+umino:{n:'海野翔太',en:'Shota Umino',u:'honta',org:'新日本プロレス',av:'海',
+ p:[['生まれ','1997年4月17日、東京都世田谷区出身'],['体格','183cm・103kg'],['デビュー','2017年4月13日']],
+ d:['父は新日本のレフェリー、レッドシューズ海野さん。いわゆる「親子で新日本」','イギリス遠征（RevPro）で腕を磨き、凱旋後はジョン・モクスリーの相棒としても注目された','2025年1月4日の東京ドームでは、IWGP世界ヘビー級王座をかけてザック・セイバーJr.に挑戦（敗戦）'],
+ y:['6月14日大阪城ホールで、3WAY戦を制してIWGP GLOBALヘビー級王座を初戴冠。デビュー9年、20回目の挑戦でつかんだ初のベルト','7月6日にゲイブ・キッドに敗れて王座陥落','G1 CLIMAX 36は開幕戦で脳振とうとなり、ドクターストップで残り全戦を欠場','10月12日の両国でゲイブ・キッドとのGLOBAL王座奪還戦に挑むも敗戦。巻き返しを狙う'],
+ m:'Second Chapter（GLOBAL王座を取った技）、デスライダー、STF',
+ t:'第1試合でアックス・ワンの新日本デビュー戦の相手。第1回JAMでは棚橋さんと組んで勝っています',l:NJ(89835)},
+axe:{n:'アックス・ワン',en:'Axe Wang',u:'tw',org:'台湾・PUZZLEプロレスリング',av:'ア',
+ p:[['生まれ','1996年12月9日（30歳）、台湾・台北出身'],['体格','183cm・93kg'],['デビュー','2016年3月19日'],['キャッチコピー','「台湾プロレス界No.1のイケメン」']],
+ d:['2015年から台湾でトレーニングを始め、2018年からPUZZLEで活動。2019年には沖縄の琉球ドラゴンプロレスリングでも修業','PUZZLEのシングル王座「Top of Puzzle」の初代王者（2022〜2023年）。身体能力とビジュアルで団体を引っぱってきた','2024年4月14日、新日本の台湾大会の第0試合に出場（PUZZLE代表の闘魚に敗戦）。大日本プロレスの台湾大会にも2024年から3年連続で出場','2025年のFREEDOMS vs PUZZLEの団体対抗戦では、台湾・日本の両大会で勝利'],
+ y:['7月の自身の10周年大会のあと、新日本での修業を発表','9月に来日し、新日本の野毛道場で過酷なトレーニングを積んできた'],
+ m:'',
+ t:'今日が新日本プロレスでのデビュー戦。相手の海野とは1歳違いの同世代です',l:null},
+fujinami:{n:'藤波辰爾',en:'Tatsumi Fujinami',u:'legend',org:'DRADITION',av:'藤',
+ p:[['生まれ','1953年12月28日（72歳）、大分県国東市出身'],['体格','183cm・103kg（公称）'],['デビュー','1971年、17歳で日本プロレス']],
+ d:['アントニオ猪木さんの付き人から始まり、新日本の旗揚げに参加した「炎の飛龍」。棚橋社長の師匠でもある','ドラゴン・スープレックス、ドラゴン・スリーパーを生んだ人。IWGPヘビー級王座は6回','1999〜2004年は新日本の社長。いまは自分の団体DRADITIONを主宰','2015年にWWE殿堂入り。息子のLEONAもプロレスラー'],
+ y:['3月6日の大田区「旗揚げ記念日」の10人タッグでH.O.Tと因縁が生まれる','5月22日のDRADITION後楽園で成田蓮と一騎打ち。健在ぶりを見せたが、無法ファイトの前に敗戦。試合後に袋叩きにされたところをウルフが救出','11月6日のDRADITION後楽園、デビュー55周年試合で藤波＆ザック vs ウルフ＆松本達哉。ウルフと戦って絆を深めた','第1回JAMにも出場（高橋ヒロム・LEONAと組んで棚橋組と対戦）'],
+ m:'ドラゴン・スープレックス、ドラゴン・スクリュー、ドラゴン・スリーパー',
+ t:'8人タッグで、ウルフアロンや上村、武知と同じコーナーに立ちます。棚橋社長も「藤波さんへの感謝」を口にしています',l:null},
+uemura:{n:'上村優也',en:'Yuya Uemura',u:'honta',org:'新日本プロレス',av:'上',
+ p:[['生まれ','1994年11月18日、愛媛県今治市出身'],['体格','180cm・101kg'],['デビュー','2018年4月10日（相手は成田蓮）']],
+ d:['福岡大学レスリング部出身。グレコローマンで西日本学生リーグ優勝','アメリカ遠征（Impact Wrestlingなど）を経て凱旋。クラシカルなテクニックが持ち味'],
+ y:['3月のNEW JAPAN CUPで準優勝。G1と合わせて今年は2回、あと一歩で優勝を逃している','G1 CLIMAX 36ではBブロックを突破し、準決勝でIWGPヘビー級王者の辻陽太を撃破。決勝で大岩陵平に敗れて準優勝','1月4日の東京ドームでは海野・武知海青と組んだ'],
+ m:'カンヌキスープレックス、フライングボディアタック',
+ t:'8人タッグで藤波さん、ウルフ、武知と組み、H.O.Tと対戦。第1回JAMでもH.O.Tと戦っています',l:NJ(139487)},
+wolf:{n:'ウルフアロン',en:'Aaron Wolf',u:'honta',org:'新日本プロレス',av:'ウ',
+ p:[['生まれ','1996年2月25日、東京都葛飾区出身'],['体格','181cm・115kg'],['デビュー','2026年1月4日 東京ドーム']],
+ d:['6歳で柔道を始め、東海大浦安高で高校三冠。100kg級で2017年世界選手権金、2019年全日本選手権優勝、東京五輪で日本に21年ぶりの金メダル','2025年6月に柔道に区切りをつけ、新日本入団を電撃発表'],
+ y:['1月4日のデビュー戦でEVILにレフェリーストップ勝ち。いきなりNEVER無差別級王座を獲得','2月11日大阪で成田蓮に敗れ陥落、6月14日大阪城ホールで取り返す','新人では26年ぶりにG1 CLIMAXに出場','10月12日の両国で藤田晃生を退けて防衛。藤田との「デブ」問答は棚橋社長にまで飛び火','5月、DRADITIONで成田らに袋叩きにされた藤波さんを救出。11月6日には藤波さんの55周年試合で対戦'],
+ m:'アングルスラム、パワースラム、逆三角締め、目覚めのウルフ',
+ t:'8人タッグで、NEVER王座を奪い合った成田蓮のいるH.O.Tと対戦',l:NJ(604819)},
+takechi:{n:'武知海青',en:'Kaisei Takechi',u:'ext',org:'DDT／THE RAMPAGE（LDH）',av:'武',
+ p:[['生まれ','1998年2月4日、兵庫県宝塚市出身'],['体格','183cm'],['デビュー','2024年2月25日 DDT後楽園']],
+ d:['16人組ダンス＆ボーカルグループ「THE RAMPAGE from EXILE TRIBE」のパフォーマー','DDTが協力したドラマ『覆面D』（2022年）でレスラー役を演じたのがきっかけでデビュー','2025年にDDTへ正式入団し、パフォーマーとの二刀流。2025年の東スポ・プロレス大賞新人賞'],
+ y:['2025年11月19日の後楽園『粛清の夜』でH.O.Tと6人タッグで対戦し、新日本初参戦。試合後に棚橋社長へラブコール','それが実って、1月4日の東京ドームで海野・上村と組んでNEVER 6人タッグ王座戦（トルネードランボー）に出場。入場ではTHE RAMPAGEがサプライズでパフォーマンス','KO-D 6人タッグ王座の戴冠経験あり'],
+ m:'ドロップキック、チョークスラム、空中技も使う',
+ t:'8人タッグでH.O.Tと対戦。1月4日以来、約10か月ぶりの新日本。初参戦からちょうど1年で、ドームで組んだ上村とまた同じコーナーに',l:{t:'DDTプロレス公式サイト',u:'https://www.ddtpro.com/'}},
+narita:{n:'成田蓮',en:'Ren Narita',u:'hot',org:'新日本プロレス',av:'成',
+ p:[['生まれ','1997年11月29日、青森県青森市出身'],['体格','182cm・100kg'],['デビュー','2017年7月4日（相手は海野翔太）']],
+ d:['野球・剣道・レスリングの経験あり。ヤングライオン時代は海野と同期のライバルで、2019年のヤングライオン杯は準優勝。そのあとアメリカのLA道場で修業','2023年12月、相棒だった海野を裏切ってH.O.Tへ','TV王座、NEVER 6人タッグ王座の戴冠経験あり'],
+ y:['2月11日大阪でウルフアロンからNEVER無差別級王座を奪取。6月14日に奪い返される'],
+ m:'ダブルクロス、フロントスープレックスホールド、断頭台',
+ t:'8人タッグでH.O.Tの一員として出場。因縁のウルフと再び同じリングへ',l:NJ(101824)},
+sanada:{n:'SANADA',en:'SANADA',u:'hot',org:'新日本プロレス',av:'S',
+ p:[['生まれ','1988年1月28日、新潟県新潟市出身'],['体格','182cm・100kg'],['デビュー','2007年3月13日 全日本プロレス']],
+ d:['武藤敬司さんの道場出身。新日本ではロス・インゴベルナブレス・デ・ハポン、Just 5 Guys、War Dogsを経て2025年4月にH.O.T入り','2023年にNEW JAPAN CUP優勝、IWGP世界ヘビー級王座も獲得'],
+ y:['1月から胸郭出口症候群で長期欠場し、5月に復帰','6月14日にTV王座に挑戦するも、竹下幸之介に敗れる','6月26日に元SKE48の桑原みずきさんとの結婚を発表'],
+ m:'デッドフォール、Skull End、ラウンディングボディプレス、TKO',
+ t:'8人タッグでH.O.Tの一員として出場。第1回JAMにもH.O.T側で出ています',l:NJ(753)},
+yujiro:{n:'高橋裕二郎',en:'Yujiro Takahashi',u:'hot',org:'新日本プロレス',av:'裕',
+ p:[['生まれ','1981年1月13日、新潟県新潟市出身'],['体格','178cm・95kg'],['デビュー','2004年7月26日 後楽園ホール']],
+ d:['日本体育大学レスリング部出身で、全日本学生選手権グレコローマン84kg級王者','若手時代は内藤哲也と「NO LIMIT」を組んだ','CHAOSを経て、BULLET CLUB初の日本人メンバーに。2021年にH.O.T結成','「東京ピンプス」のキャラクターで、セクシーなダンサーを連れて入場したことも','NEVER無差別級王座、IWGPタッグ王座の戴冠経験あり'],
+ y:[],
+ m:'Big Juice、ピンプジュース、マイアミ・シャイン、東京ピンプス',
+ t:'8人タッグでH.O.Tの一員として出場',l:NJ(699)},
+kanemaru:{n:'金丸義信',en:'Yoshinobu Kanemaru',u:'hot',org:'新日本プロレス',av:'金',
+ p:[['生まれ','1976年9月23日、山梨県甲府市出身'],['体格','173cm・85kg'],['デビュー','1996年7月6日 全日本プロレス']],
+ d:['全日本→ノアで活躍し、GHCジュニア王座は7回','鈴木軍を経て、2023年からH.O.T','口に含んだウイスキーを相手に吹きかけるのが代名詞'],
+ y:[],
+ m:'タッチアウト、ディープインパクト、トルネードDDT、ウイスキー攻撃',
+ t:'8人タッグでH.O.Tの一員として出場。ウイスキー噴射に注目（されたくない）',l:NJ(229)},
+shun:{n:'シュン・スカイウォーカー',en:'Shun Skywalker',u:'hot',org:'新日本プロレス',av:'シ',
+ p:[['生まれ','1996年5月30日、岐阜県土岐市出身'],['体格','183cm・90kg'],['デビュー','2016年4月22日 ドラゴンゲート']],
+ d:['ドラゴンゲート出身のマスクマン。2019年末からメキシコ遠征','2020年に凱旋し、Eitaを破って団体最高峰のオープン・ザ・ドリームゲート王座を当時最年少で初戴冠','ハイフライヤーからヒールに転向。狂気的なマイクと予測不能なスタイルで団体の顔に','第1回JAMにもドラゲーから参戦し、LIJ側で勝利'],
+ y:['6月4日の後楽園で「天に帰る」とドラゴンゲート退団を表明し、8月4日の後楽園が最後の試合に','その11日後、8月15日の両国で新日本に現れてH.O.Tに電撃加入。竹下幸之介のTV王座に狙いを定める','9月27日の神戸ワールド記念ホールで竹下から王座を奪取し、第11代NJPW WORLD認定TV王者に','直後に「すぐにベルトを返上するかもしれない」「新日本に用はないかもしれない」と発言して物議','10月6日の後楽園では「新日本プロレス、たいしたことないなあ」とマイク。10月12日の両国では矢野に丸め込まれて直接負けし、「オマエには天罰が下るぞ」'],
+ m:'SKYFALL（飛びつき式高速ネックスクリュー）、SSW、アシュラ、スカイウォーカー・ムーンサルト、ブラスター',
+ t:'TV王座の初防衛戦で、矢野通の挑戦を受けます',l:NJ(408302)},
+yano:{n:'矢野通',en:'Toru Yano',u:'honta',org:'新日本プロレス',av:'矢',
+ p:[['生まれ','1978年5月18日、東京都荒川区出身'],['体格','186cm・115kg'],['デビュー','2002年5月18日']],
+ d:['中学からアマレス。高校で全国大会優勝、日本大学でもフリー・グレコの両スタイルで活躍','長くCHAOSの中心にいた古株で、いまは本隊。コーナーパッドを外したり、丸め込みで一瞬の勝利をさらったりの頭脳派','KOPW（2020・2021年）、NEVER 6人タッグ王座は7回、IWGPタッグ王座3回'],
+ y:['1月4日の東京ドームではNEVER 6人タッグ王者として登場','9月27日神戸、TV王座を取ったシュンとH.O.Tが暴れたところに駆けつけ「俺がな、ぶちのめしてやる！」','10月6日の後楽園でシュンに「オマエのことなんか誰も知らない」と挑発され、翌日は「スポンサー企業のみなさまをこよなく愛し、地域振興に勤しむプロレスラー」と長めの自己紹介でお返し','10月12日の両国のタッグ戦で、シュンから横入り式エビ固めで直接ピンフォール勝ち。ベルトを掲げて挑戦をアピール'],
+ m:'鬼殺し、裏霞、鏡割り、赤霧、黒霧島',
+ t:'キャリア25年目でTV王座初戴冠を狙います。棚橋社長も「ここ最近の矢野通に頼もしさを感じているのは、僕だけじゃないはず」',l:NJ(698)},
+zack:{n:'ザック・セイバーJr.',en:'Zack Sabre Jr.',u:'tmdk',org:'新日本プロレス',av:'Z',
+ p:[['生まれ','1987年7月24日、イギリス・ケント州シェピー島出身'],['体格','186cm・96kg'],['デビュー','2004年4月20日']],
+ d:['TMDKのリーダー。関節技の名手で、技名に音楽や映画のネタが多い','2024年のG1 CLIMAXで優勝（外国人選手として2人目）','IWGP世界ヘビー級王座は2回。2回目は第1回JAMで後藤洋央紀から奪った','NJPW WORLD認定TV王座の初代王者','2015年からヴィーガン。日本の永住権を持つ'],
+ y:['2025年のWORLD TAG LEAGUEを大岩と組んで優勝','1月の東京ドームで大岩・ジャクソンとNEVER 6人タッグ王座を獲得','11月3日のDDT両国大会で青木真也と「寝業師対決」。新日本の外国人選手でいちばんDDT参戦経験が多い'],
+ m:'ザックドライバー、クラーキーキャット、ジムブレイクスアームバー、ヨーロピアンクラッチ',
+ t:'メインで、同じTMDKの大岩・ジャクソンと対角に。藤田と、DDTの正田と組みます',l:NJ(498)},
+fujita:{n:'藤田晃生',en:'Kosei Fujita',u:'tmdk',org:'新日本プロレス',av:'藤',
+ p:[['生まれ','2002年7月14日、愛媛県新居浜市出身'],['体格','178cm・86kg'],['デビュー','2021年8月24日 後楽園（相手は大岩陵平）']],
+ d:['高校3年間レスリング。2019年JOC中国・四国大会80kg級優勝','2023年1月にザックの誘いでTMDK入り','2025年のBEST OF THE SUPER Jr.を史上最年少で優勝','ロビー・イーグルスとIWGPジュニアタッグ王座'],
+ y:['ジュニアヘビー級で確固たる地位を築きつつ、NEVER無差別級王座をめぐってウルフアロンと抗争。10月12日の両国で挑戦するも敗れる','正田とは2025年7月と11月にDDTでタッグを組み、2026年5月には二人でトークショーも'],
+ m:'Abandon Hope',
+ t:'メインでザック、正田と組みます。対角の大岩は、同じ日にデビューしたデビュー戦の相手',l:NJ(310778)},
+masada:{n:'正田壮史',en:'Takeshi Masada',u:'ext',org:'DDTプロレスリング',av:'正',
+ p:[['生まれ','2001年10月2日、大阪府堺市出身'],['体格','180cm・84kg（公称）'],['デビュー','2022年8月14日 後楽園（DDT史上最速デビュー）']],
+ d:['少林寺拳法がバックボーンのDDTの若手有望株。HARASHIMAさんの指導を受け、高校ではインターハイ団体演武3位','2023年D-Generations Cup優勝。KO-Dタッグ王座（クリス・ブルックスと）'],
+ y:['藤田晃生とは「ズッ友」を名乗る親友','武知海青のデビュー戦（2024年）で相手チームにいた'],
+ m:'',
+ t:'メインでザック＆藤田と組んで新日本のリングへ',l:{t:'DDTプロレス公式サイト',u:'https://www.ddtpro.com/'}},
+oiwa:{n:'大岩陵平',en:'Ryohei Oiwa',u:'tmdk',org:'新日本プロレス',av:'大',
+ p:[['生まれ','1998年11月7日、愛知県江南市出身'],['体格','180cm・110kg'],['デビュー','2021年8月24日 後楽園（相手は藤田晃生）'],['入場曲','THE GRIP']],
+ d:['アマレス出身（2018年JOCジュニアオリンピック86kg級フリー3位）','2023年9月からNOAHで修業。清宮海斗と組んで2024年のビクトリーチャレンジ・タッグリーグ優勝','2024年9月にTMDK入り。2025年のWORLD TAG LEAGUEをザックと優勝'],
+ y:['G1 CLIMAX 36で初優勝。決勝で上村優也を古典技のヘッドロックで破り、史上最短キャリアでの制覇','天山広吉さんから贈られた角をつけて入場する「令和の夏男」','10月12日両国でIWGPヘビー級王座に初挑戦するも、辻陽太に敗れる'],
+ m:'THE GRIP、ビッグロック、アーククラッチ、ロイクラッチ、ドクターボム、サイドスープレックス',
+ t:'今年のG1覇者。メインで、NOAH修業に導いてくれた恩人・清宮と再び組みます。同門のザックにはシングルでまだ勝ったことがなく、越えなければならない壁',l:NJ(310777)},
+jackson:{n:'ハートリー・ジャクソン',en:'Hartley Jackson',u:'tmdk',org:'新日本プロレス',av:'H',
+ p:[['生まれ','1980年4月17日、オーストラリア・アデレード出身'],['体格','185cm・135kg'],['デビュー','1999年10月4日']],
+ d:['2005年に新日本のLA道場に入門し、2006年には新日本に初来日していた','ゼロワン（2020年の火祭り優勝）、全日本、大日本、ガンバレ☆プロレスなど日本のリング経験が豊富','2018年にWWE NXTのコーチ兼プロデューサー。オーストラリアでもTMDKのメンバーとして知られる','2024年8月、負傷した藤田の代役からTMDK入り'],
+ y:['1月の東京ドームでザック・大岩とNEVER 6人タッグ王座を獲得','3月に初のNEW JAPAN CUP出場'],
+ m:'デスバレードライバー、ソウルキラー',
+ t:'メインで大岩・清宮と組み、同じTMDKのザック組と対戦。頑丈な体とパワーで支える「TMDKの縁の下の力持ち」',l:NJ(252)},
+kiyomiya:{n:'清宮海斗',en:'Kaito Kiyomiya',u:'ext',org:'プロレスリング・ノア',av:'清',
+ p:[['生まれ','1996年7月17日、埼玉県さいたま市出身'],['体格','180cm・98kg（公称）'],['デビュー','2015年12月']],
+ d:['ノアの最高峰GHCヘビー級王座を3回戴冠','大岩をNOAH修業に導き、ファイトスタイルづくりのキーパーソンになった恩人。2023年のWORLD TAG LEAGUEにも二人で出場','第1回JAMのメインで大岩と組み、棚橋＆丸藤と対戦'],
+ y:['8月、新設のGHC 200王座の初代決定トーナメントでYoshiki Inamuraと時間切れ引き分け、両者敗退'],
+ m:'シャイニング・ウィザード、タイガー・スープレックス',
+ t:'メインで大岩と再びタッグ。新日本のTMDK勢に挑みます',l:{t:'プロレスリング・ノア公式サイト',u:'https://www.noah.co.jp/'}},
+makabe:{n:'真壁刀義',en:'Togi Makabe',u:'honta',org:'新日本プロレス',av:'真',
+ p:[['生まれ','1972年9月29日、神奈川県相模原市出身'],['体格','181cm・110kg'],['デビュー','1997年2月15日']],
+ d:['首にかけたゴツい鉄の鎖がトレードマーク。リングでは激しい突進ファイト','プライベートは大の甘党で、そのギャップでお茶の間でも人気者に。俳優・声優としても活躍し、2017年にはNHK大河『おんな城主 直虎』にも出演','IWGPヘビー級王座、NEVER無差別級王座、2009年のG1 CLIMAX優勝'],
+ y:['1月4日の東京ドームのランボーに、タイガーマスク・田口と組んで出場'],
+ m:'キングコングニードロップ、ラリアット、ノーザンライトスープレックス、スパイダージャーマン',
+ t:'第3試合で、小島・永田・田口と組むベテランチーム',l:NJ(697)},
+kojima:{n:'小島聡',en:'Satoshi Kojima',u:'honta',org:'新日本プロレス',av:'小',
+ p:[['生まれ','1970年9月14日、東京都江東区出身'],['体格','183cm・108kg'],['デビュー','1991年7月16日（相手は天山広吉）']],
+ d:['アニマル浜口ジム出身。天山広吉との「テンコジ」でIWGPタッグ王座','IWGPヘビー級、全日本の三冠ヘビー級、ノアのGHCヘビー級とメジャーの頂点を制覇。2010年のG1 CLIMAX優勝','決めゼリフは「いっちゃうぞバカヤロー！」。会場が一緒に叫ぶお約束'],
+ y:['8月15日の両国、盟友・天山広吉の引退試合で相手を務めて勝利'],
+ m:'ラリアット、ダイビングエルボードロップ、コジコジカッター、CCD',
+ t:'第3試合で、真壁・永田・田口と組むベテランチーム',l:NJ(703)},
+goto:{n:'後藤洋央紀',en:'Hirooki Goto',u:'honta',org:'新日本プロレス',av:'後',
+ p:[['生まれ','1979年6月25日、三重県桑名市出身'],['体格','182cm・103kg'],['デビュー','2003年7月6日（相手は田口隆祐）']],
+ d:['IWGP世界ヘビー級王座、IWGPインターコンチネンタル、NEVER無差別級王座。2008年のG1 CLIMAX優勝、NEW JAPAN CUP3回、WORLD TAG LEAGUE5回優勝','YOSHI-HASHIとのタッグ「毘沙門」でも活躍','第1回JAMでは、ザックにIWGP世界ヘビー級王座を奪われた'],
+ y:['10月16日に全世界公開のハリウッド実写映画『ストリートファイター』で、エドモンド本田役を演じた'],
+ m:'GTR、昇天・改、裏昇天、牛殺し、後藤式',
+ t:'第3試合で、後藤革命軍を率いる。映画のE.本田の張り手が出るか',l:NJ(689)},
+taguchi:{n:'田口隆祐',en:'Ryusuke Taguchi',u:'honta',org:'新日本プロレス',av:'田',
+ p:[['生まれ','1979年4月15日、宮城県岩沼市出身'],['体格','180cm・91kg'],['デビュー','2002年11月22日 後楽園（相手は矢野通）']],
+ d:['大学はレスリング部。2004年のヤングライオン杯優勝からメキシコ遠征','IWGPジュニア王座、2012年のBEST OF THE SUPER Jr.優勝','ヒップアタックと、笑いを誘う試合運びでおなじみ。「田口監督」とも呼ばれる'],
+ y:['1月4日の東京ドームのランボーに出場','第1回JAMでは棚橋・海野と組んで勝利'],
+ m:'オーマイ＆ガーアンクル、どどん、どどんスズスロウン、鹿殺し、ヒップアタック',
+ t:'第3試合で、真壁・小島・永田と組むベテランチーム（タグチジャパン）',l:NJ(692)},
+taichi:{n:'タイチ',en:'Taichi',u:'honta',org:'新日本プロレス',av:'タ',
+ p:[['生まれ','1980年3月19日、北海道石狩市出身'],['体格','177cm・100kg'],['デビュー','2002年12月2日 全日本プロレス']],
+ d:['もとのリングネームは、故・橋本真也さんが名付けた「石狩太一」','2010年には小島聡に弟子入りして「小島軍」を結成したことも','NEVER無差別級王座、2023年のKOPW保持者。YouTubeは「聖帝タイチのゲーム実況」'],
+ y:['1月4日の東京ドームのランボーに、石井・小島と組んで出場','6月23日、G1出場をかけた試合でYUTO-ICEに敗れる'],
+ m:'天翔十字鳳、タイチ式ラストライド、タイチ式外道クラッチ、ブラックメフィスト',
+ t:'カードには入っていませんが、モンスターランボーに出てきそうな一人',l:NJ(709)},
+oleg:{n:'ボルチン・オレッグ',en:'Boltin Oleg',u:'honta',org:'新日本プロレス',av:'ボ',
+ p:[['生まれ','1993年2月10日、カザフスタン出身'],['体格','187cm・120kg'],['デビュー','2023年4月2日 後楽園']],
+ d:['レスリングでアジア選手権優勝（2021年、フリースタイル125kg級）の実績を持つ怪力。永田裕志が率いる新日本のレスリングチームから入団','豪快な投げ技が武器。NEVER無差別級6人タッグ王座'],
+ y:['G1 CLIMAX 36で、IWGPヘビー級王者の辻陽太から勝利','ワールドタッグリーグはウルフアロンと組んで出場予定'],
+ m:'カミカゼ、サイドスープレックス',
+ t:'第1試合で、レスリングの後輩・小畑詩音のデビュー戦の相手',l:NJ(396997)},
+obata:{n:'小畑詩音',en:'Shion Obata',u:'honta',org:'新日本プロレス',av:'小',
+ p:[['生まれ','2001年8月4日、宮城県出身'],['体格','185cm・130kg']],
+ d:['全日本大学グレコローマン選手権を2度制覇、国体でも優勝、全日本選手権は4年連続準優勝というアマレスのエリート','新日本のレスリングチームで練習を積んで、今年の夏に正式入団'],
+ y:['この大会がプロレスデビュー戦'],
+ m:'',
+ t:'第1試合がデビュー戦。同じレスリング出身のオレッグが相手',l:{t:'新日本プロレス公式・対戦カード',u:'https://www.njpw.co.jp/tournament/card/654881'}},
+nagata:{n:'永田裕志',en:'Yuji Nagata',u:'honta',org:'新日本プロレス',av:'永',
+ p:[['生まれ','1968年4月24日、千葉県東金市出身'],['体格','183cm・108kg'],['デビュー','1992年9月14日（相手は天山広吉）']],
+ d:['アマレス出身。IWGPヘビー級王座で当時の最多防衛記録V10','2001年のG1 CLIMAX優勝。全日本の三冠ヘビー級、ノアのGHCタッグなども獲得','敬礼ポーズと、白目をむいて決める腕固めがおなじみ。YouTubeは「永田裕志のゼァ!チャンネル」'],
+ y:[],
+ m:'バックドロップホールド、ナガタロックⅡ、腕固め、エクスプロイダー',
+ t:'第3試合で、真壁・小島・田口と組むベテランチーム',l:NJ(695)},
+yoshihashi:{n:'YOSHI-HASHI',en:'YOSHI-HASHI',u:'honta',org:'新日本プロレス',av:'Y',
+ p:[['生まれ','1982年5月25日、愛知県東郷町出身'],['体格','180cm・102kg'],['デビュー','2008年7月6日 後楽園（相手は内藤哲也）']],
+ d:['アニマル浜口ジム出身。メキシコ遠征を経てヘビー級に転向','後藤洋央紀とのタッグ「毘沙門」でIWGPタッグ王座、WORLD TAG LEAGUEを2021〜2023年に3連覇','後藤と「後藤革命軍」として活動'],
+ y:[],
+ m:'カルマ、頂狩、スワントーンボム、バタフライロック',
+ t:'第3試合で後藤革命軍として出場',l:NJ(723)},
+yoh:{n:'YOH',en:'YOH',u:'honta',org:'新日本プロレス',av:'Y',
+ p:[['生まれ','1988年6月25日、宮城県栗原市出身'],['体格','171.5cm・85kg'],['デビュー','2012年11月19日']],
+ d:['ジュニアヘビー級。SHOとの「ROPPONGI 3K」でジュニアタッグ王座を何度も獲得','IWGPジュニアヘビー級王座、BEST OF THE SUPER Jr.33優勝'],
+ y:[],
+ m:'DIRECT DRIVE、ファルコンアロー、トラースキック、ファイブスタークラッチ',
+ t:'第3試合で後藤革命軍として出場',l:NJ(117051)},
+matsumoto:{n:'松本達哉',en:'Tatsuya Matsumoto',u:'honta',org:'新日本プロレス',av:'松',
+ p:[['生まれ','2000年10月16日、神奈川県横浜市出身'],['体格','180cm・85kg'],['デビュー','2025年6月18日']],
+ d:['高校時代にレスリングとグラップリング。入門前はパーソナルトレーナーで、ボディビル（メンズフィジーク）の大会で3位','若手（ヤングライオン）'],
+ y:['11月6日の藤波辰爾55周年大会でウルフアロンと組み、藤波＆ザック組に敗れる'],
+ m:'',
+ t:'第3試合で後藤革命軍として、大ベテラン4人に挑む',l:NJ(580597)},
+okhan:{n:'グレート-O-カーン',en:'Great-O-Khan',u:'ue',org:'新日本プロレス',av:'O',
+ p:[['生まれ','不明（公式発表）'],['体格','188cm・120kg']],
+ d:['弁髪とひげのチンギス・カンを思わせる風貌。自分を「余」と呼び、「ひれ伏せ愚民どもっ！」と罵る傍若無人なヒール','2022年、武蔵小杉駅で酔っ払いに連れ去られそうになった女の子を助け、パンケーキの話で落ち着かせて警察から感謝状。その後、試合でその感謝状を武器や盾にした','趣味はアニメ、マンガ、ゲーム、VTuber（ホロライブの宝鐘マリン、大空スバル推し）、麻雀、激辛など。技名にも「大空スバル式羊殺し」','IWGPタッグ王座、NJPW WORLD認定TV王座、2024年のKOPW覇者'],
+ y:['6月14日にHENAREとIWGPタッグ王座を獲得。10月6日にKnock Out Brothersに奪い返される'],
+ m:'エリミネーター、モンゴリアンチョップ、崩壊、玉座、大空スバル式羊殺し',
+ t:'UNITED EMPIRE勢はカードに入っていませんが、モンスターの名にぴったりの巨体。ランボーに出てくるか',l:NJ(265105)},
+};
+var NK={"umino": "不屈のライオン", "axe": "台湾プロレス界No.1のイケメン", "fujinami": "炎の飛龍", "uemura": "HEAT STORM", "wolf": "五輪金メダリスト", "takechi": "二刀流レスラー", "narita": "SOULED OUT", "sanada": "COLD BLOODED snake", "yujiro": "THE TOKYO PIMPS", "kanemaru": "ヒールマスター", "shun": "天空歩人", "yano": "敏腕プロデューサー", "zack": "ザ・フロントマン", "fujita": "Japanese young punk", "masada": "BABY GIRL", "oiwa": "THE GRIP", "jackson": "BIG JAG", "kiyomiya": "狂乱のプリンス", "makabe": "暴走キングコング", "kojima": "剛腕", "goto": "混沌の荒武者", "taguchi": "ファンキー・ウェポン", "taichi": "愛を捨てた聖帝", "okhan": "ドミネーター", "nagata": "ブルージャスティス", "yoshihashi": "HEAD HUNTER", "yoh": "DIRECT DRIVE", "oleg": "BARS"};
+var FX={"yano": {"f": "正面から殴り合うより、ずる賢さで勝つ頭脳派。コーナーパッドを外してぶつける、レフェリーが見ていないすきに急所攻撃、相手をテープでロープに縛りつけてリングアウトを狙う、そして一瞬の丸め込み。笑いをとりながら、気づいたら勝っているのが矢野", "c": "「Y！T！R！」（YTRコール）。矢野の入場や見せ場で会場がそろって叫びます"}, "fujinami": {"f": "72歳とは思えない身のこなしで、ドラゴン殺法（ドラゴン・スクリュー、ドラゴン・スリーパーなど）を繰り出すレジェンド。出てくるだけで会場の空気が変わります", "c": "「ドラゴン！」コール。技が決まった瞬間や入場で起きます"}, "zack": {"f": "関節技の職人。手首、足首、首…どこからでも極めにくる。相手の技を切り返して一瞬で丸め込む頭脳派でもあり、コメントは皮肉たっぷり", "c": ""}, "fujita": {"f": "スピードとキックが持ち味のジュニア戦士。TMDKらしい生意気さも魅力。DDTの正田とは「ズッ友」", "c": ""}, "masada": {"f": "少林寺拳法仕込みの打撃が武器のDDT若手。藤田とは「ズッ友」を名乗るほどの親友で、二人のタッグワークに注目", "c": ""}, "oiwa": {"f": "アマレス出身のクラシカルなレスリング。ヘッドロックのような基本技で国技館を沸かせ、G1を取ったほどの説得力。パワーも十分", "c": ""}, "jackson": {"f": "135kgの巨体を生かしたパワーファイター。TMDKの縁の下の力持ち", "c": ""}, "kiyomiya": {"f": "NOAHのエースを張ってきた熱いファイター。シャイニング・ウィザードは一撃必殺", "c": ""}, "shun": {"f": "元はドラゴンゲートのハイフライヤー。ヒールに転じてからは、狂気的なマイクと予測不能なスタイルが武器。H.O.Tの仲間の介入も使う", "c": ""}, "narita": {"f": "H.O.Tの中心。凶器や仲間の介入も平気で使う一方、もとは鈴木みのるらと組んだストロングスタイルの使い手で、技術はしっかり", "c": ""}, "sanada": {"f": "しなやかで美しい技術派だったが、H.O.T入りしてからは悪の連係にも加わる。テクニックの応酬が見どころ", "c": ""}, "yujiro": {"f": "「東京ピンプス」のキャラクターで、H.O.Tの介入・反則担当の古株", "c": ""}, "kanemaru": {"f": "老獪なインサイドワークの職人。口に含んだウイスキーを相手に吹きかけて、そこから決めにいく", "c": ""}, "uemura": {"f": "アマレス仕込みのクラシカルなテクニック。正統派で、真っ向勝負の気持ちよさがある", "c": ""}, "wolf": {"f": "柔道仕込みの投げと絞め、そしてパワー。勝ったあと相手に座礼するのが印象的", "c": ""}, "takechi": {"f": "ダンサーならではの身のこなしと高い運動神経で、ドロップキックや空中技が華麗", "c": ""}, "umino": {"f": "熱さと真っ向勝負が持ち味。デスライダーやSecond Chapterで一気に決めにいく", "c": ""}, "axe": {"f": "優れた身体能力と、「台湾プロレス界No.1のイケメン」と呼ばれるビジュアル", "c": ""}};
+var M=[
+ {k:'match1',no:'第1試合',type:'小畑詩音デビュー戦',rule:'20分一本勝負',a:['oleg'],b:['obata'],
+  pt:'アマレスのエリート・小畑詩音のプロレスデビュー戦。相手は、同じくレスリング出身でG1では王者・辻陽太にも勝ったボルチン・オレッグ。',
+  w:'130kgと120kgの肉弾戦。デビュー戦の緊張と、オレッグの豪快な投げ'},
+ {k:'match2',no:'第2試合',type:'アックス・ワン 新日本デビュー戦',rule:'20分一本勝負',a:['umino'],b:['axe'],
+  pt:'「台湾プロレス界No.1のイケメン」が、野毛道場での修業を経て新日本のリングへ。迎え撃つのは、10月の両国でGLOBAL王座奪還に失敗し、巻き返しを狙う海野翔太。30歳と29歳の同世代対決です。',
+  w:'キャリア10年の選手の「新日本デビュー」。新人とは違う完成度と、海野が叩き込む新日本の厳しさ'},
+ {k:'match3',no:'第3試合',type:'後藤革命軍 vs JUSTICE タグチジャパン',rule:'20分一本勝負',a:['matsumoto','yoh','yoshihashi','goto'],b:['makabe','kojima','nagata','taguchi'],an:'後藤革命軍',bn:'JUSTICE タグチジャパン',
+  pt:'後藤・YOSHI-HASHIの「後藤革命軍」にYOHと若手の松本が加わり、真壁・小島・永田・田口の大ベテラン4人と激突。4人合わせてキャリア120年超えのベテランチームに、若い松本がどこまで食らいつけるか。',
+  w:'小島の「いっちゃうぞバカヤロー」、永田の敬礼、田口のヒップアタックなど、ベテランのお約束が全部見られるかも'},
+ {k:'match4',no:'第4試合',type:'モンスターランボー',rule:'',tba:true,
+  pt:'シングルマッチから始まって、1分ごとに1人ずつ選手が入ってくる時間差バトルロイヤル。負けた選手から退場し、最後の1人になったら決着。トップロープを越えて場外に落ちても退場です。出場選手と順番は、入場曲で発表されます（参戦人数は未定）。',
+  w:'次々に入ってくる選手が誰なのか、入場曲が鳴った瞬間の会場のどよめき'},
+ {k:'match5',no:'第5試合',type:'スペシャル8人タッグマッチ',rule:'30分一本勝負',a:['fujinami','uemura','wolf','takechi'],b:['narita','sanada','yujiro','kanemaru'],bn:'H.O.T',
+  pt:'棚橋社長の師匠・藤波さんは、3月からH.O.Tと因縁があり、5月には成田に敗れて袋叩きに。そこを救ったのがウルフで、11月6日の55周年試合で拳を交えて絆を深めた二人が、今度はH.O.T退治で手を組みます。1月のドームで組んだ上村と武知も合流。',
+  w:'藤波さんの雪辱と、ウルフと成田のNEVER王座をめぐる因縁。上村・SANADAらのテクニックの応酬も'},
+ {k:'match6',no:'第6試合（セミ）',type:'NJPW WORLD認定TV選手権試合',rule:'15分一本勝負',title:true,a:['shun'],b:['yano'],an:'王者',bn:'挑戦者',
+  pt:'9月にベルトを奪ったシュンが「新日本たいしたことない」「矢野通、オマエのことなんか誰も知らない」と挑発。矢野は10月12日の両国でシュンから直接ピンフォールを奪い、「オマエから挑戦してこい」。プロレス界きってのクセ者同士の初防衛戦です。',
+  w:'15分の時間制限と、挑発合戦の心理戦。矢野がキャリア25年目でTV王座を初めて巻くか'},
+ {k:'match7',no:'メイン（第7試合）',type:'スペシャル6人タッグマッチ',rule:'30分一本勝負',main:true,a:['zack','fujita','masada'],b:['oiwa','jackson','kiyomiya'],
+  pt:'TMDKが敵味方に分かれて、新日本・NOAH・DDTの越境6人タッグ。ザックの隣には藤田と「ズッ友」の正田（DDT）、大岩の隣にはNOAH修業に導いてくれた恩人・清宮（NOAH）。',
+  w:'大岩はザックにシングルで勝ったことがなく、越えたい壁。ヤングライオン時代から切磋琢磨した同期・藤田との対角も'}
+];
+function css(v){return 'var('+v+')';}
+var PH={};
+function av(id){var x=W[id];var p=PH[id];return '<span class="av'+(p?' ph':'')+'" style="--uc:'+css(U[x.u].c)+'">'+(p?'<img src="'+p+'" alt="" loading="lazy">':x.av)+'</span>';}
+function chip(id){var x=W[id];return '<button type="button" class="chip" data-w="'+id+'">'+av(id)+'<span>'+(NK[id]?'<span class="nk">'+NK[id]+'</span>':'')+x.n+'<span class="org">'+x.org+'</span></span></button>';}
+function renderAll(){
+/* matches */
+document.getElementById('matches').innerHTML=M.map(function(m,mi){var mk=m.k;
+  var head='<div class="mhead"><span class="mno">'+m.no.toUpperCase()+'</span><span class="mtype">'+m.type+'</span>'+(m.title?'<span class="belt">王座戦</span>':'')+(m.rule?'<span class="mrule">'+m.rule+'</span>':'')+'</div>';
+  var body;
+  if(m.tba){body='<div class="tba">出場選手は当日発表</div><div class="side"><span class="teamname">出場しそうな選手（しおり作成者の予想）</span><div class="grid">'+['taichi','okhan'].map(chip).join('')+'</div></div>';}
+  else{body='<div class="vs"><div class="side">'+(m.an?'<span class="teamname">'+m.an+'</span>':'')+m.a.map(chip).join('')+'</div><span class="vsx">VS</span><div class="side r">'+(m.bn?'<span class="teamname">'+m.bn+'</span>':'')+m.b.map(chip).join('')+'</div></div>';}
+  var pic=(PH[mk]?'<img class="mpic" src="'+PH[mk]+'" alt="'+m.type+'の画像" loading="lazy">':'')+((ASSETS&&DB)?'<div class="mup"><label class="upbtn sm" for="up-'+mk+'">'+(PH[mk]?'画像を差し替える':'この試合の画像を入れる')+'</label><input type="file" accept="image/png,image/jpeg,image/webp" id="up-'+mk+'" data-up="'+mk+'" hidden>'+(PH[mk]?'<button type="button" class="rmbtn sm" data-rm="'+mk+'">外す</button>':'')+'<span class="small" id="msg-'+mk+'"></span></div>':'');
+  return '<article class="match'+(m.title?' title':'')+(m.main?' main':'')+'">'+head+pic+'<div class="mbody">'+body+'<div class="mtext"><h4>見どころ</h4><p>'+m.pt+'</p><h4>ここを見て</h4><p>'+m.w+'</p></div></div></article>';
+}).join('');
+/* roster */
+var order=[
+ ['honta',['umino','uemura','wolf','yano','oleg','obata','goto','yoshihashi','yoh','matsumoto','makabe','kojima','nagata','taguchi'],'どのユニットにも属さない新日本の正規軍。G1準優勝の上村、NEVER王者ウルフ、ベテランの矢野、真壁・小島・永田・田口の大ベテランなど、正統派が中心です。','石井智宏、本間朋晃、タイチ、エル・デスペラード、マスター・ワト、KUSHIDA、エル・ファンタズモ、ケビン・ナイトほか。体の大きい選手はランボーの有力候補'],
+ ['tmdk',['zack','fujita','oiwa','jackson'],'ザック・セイバーJr.が率いる技巧派ユニット。関節技やクラシカルなレスリングが持ち味で、オーストラリア勢も多い。今日はメインでメンバー同士が対角に立ちます。','ロビー・イーグルス、マイキー・ニコルス、シェイン・ヘイスト、バッド・デュード・ティト'],
+ ['hot',['shun','narita','sanada','yujiro','kanemaru'],'HOUSE OF TORTURE。凶器・乱入・反則なんでもありの極悪ユニット。2025年にBULLET CLUBから追い出されて独立し、今年8月にシュンが電撃加入。ブーイングで楽しむのが正解です。','SHO、DOUKI、ディック東郷、チェーズ・オーエンズ、ドン・ファレ'],
+ ['ext',['kiyomiya','masada','takechi'],'他団体からの参戦組。NOAHの清宮、DDTの正田と武知。棚橋社長の「普段とは違う顔合わせ」の主役たちです。',''],
+ ['legend',['fujinami'],'新日本の旗揚げメンバーで、棚橋社長の師匠。自身の団体DRADITIONから参戦します。',''],
+ ['tw',['axe'],'台湾のPUZZLEプロレスリングから来て、新日本の野毛道場で修業中。今日が新日本デビュー戦です。',''],
+ ['cand',['taichi','okhan'],'カードには入っていないけど、モンスターランボーで出てきそうな選手（しおり作成者の予想）。','']];
+document.getElementById('units').innerHTML=order.map(function(o){return '<div class="unitblock"><h3 style="--uc:'+css(U[o[0]].c)+'"><i></i>'+U[o[0]].n+'</h3><p class="udesc">'+o[2]+'</p><div class="grid">'+o[1].map(chip).join('')+'</div>'+(o[3]?'<p class="small">今日は出ない主なメンバー：'+o[3]+'（モンスターランボーに出る可能性はあります）</p>':'')+'</div>';}).join('');
+}
+renderAll();
+/* dialog */
+var dlg=document.getElementById('dlg'),db=document.getElementById('dlg-body');
+function li(a){return a&&a.length?'<ul class="tidy">'+a.map(function(s){return '<li>'+s+'</li>';}).join('')+'</ul>':'';}
+var CUR=null,ASSETS=null,DB=null;
+function open(id){var x=W[id];CUR=id;
+  var match='';M.forEach(function(m){if((m.a||[]).concat(m.b||[]).indexOf(id)>=0)match=m.no+'「'+m.type+'」';});
+  db.innerHTML='<div class="dtop">'+av(id)+'<div>'+(NK[id]?'<div class="nk big">'+NK[id]+'</div>':'')+'<h3 id="d-name">'+x.n+'</h3><div class="en">'+x.en+'</div><span class="pill" style="--uc:'+css(U[x.u].c)+'">'+U[x.u].n+'</span> <span class="pill">'+x.org+'</span></div><button class="x" type="button" aria-label="閉じる" id="dlg-x">×</button></div>'
+   +'<div class="dsec"><div class="today"><b>今日：</b>'+match+'<br>'+x.t+'</div></div>'
+   +'<div class="dsec"><h4>プロフィール</h4><dl class="terms">'+x.p.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+r[1]+'</dd>';}).join('')+'</dl></div>'
+   +(x.d.length?'<div class="dsec"><h4>こんな選手</h4>'+li(x.d)+'</div>':'')
+   +(FX[id]&&FX[id].f?'<div class="dsec"><h4>戦い方・キャラ</h4><p>'+FX[id].f+'</p></div>':'')
+   +(FX[id]&&FX[id].c?'<div class="dsec"><h4>会場でのコール</h4><p>'+FX[id].c+'</p></div>':'')
+   +(x.y.length?'<div class="dsec"><h4>2026年の動き</h4>'+li(x.y)+'</div>':'')
+   +(x.m?'<div class="dsec"><h4>得意技</h4><p>'+x.m+'</p></div>':'')
+   +(x.l?'<div class="dlinks"><a href="'+x.l.u+'" target="_blank" rel="noopener">'+x.l.t+'で写真を見る ↗</a></div>':'')
+   +((ASSETS&&DB)?'<div class="dsec upl"><h4>写真（編集できる人だけに表示）</h4><label class="upbtn" for="up-'+id+'">'+(PH[id]?'写真を差し替える':'写真を入れる')+'</label><input type="file" accept="image/png,image/jpeg,image/webp" id="up-'+id+'" hidden>'+(PH[id]?'<button type="button" class="rmbtn" id="rm-'+id+'">写真を外す</button>':'')+'<p class="small" id="upmsg">入れた写真は、このしおりを見る全員に表示されます。</p></div>':'');
+  if(!dlg.open){if(dlg.showModal){dlg.showModal();}else{dlg.setAttribute('open','');}}
+  var up=document.getElementById('up-'+id);if(up)up.addEventListener('change',function(){if(up.files[0])doUpload(id,up.files[0]);});
+  var rm=document.getElementById('rm-'+id);if(rm)rm.addEventListener('click',function(){doRemove(id);});
+  document.getElementById('dlg-x').addEventListener('click',function(){dlg.close();});
+}
+document.addEventListener('click',function(e){var c=e.target.closest('[data-w]');if(c)open(c.getAttribute('data-w'));});
+dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+dlg.addEventListener('close',function(){CUR=null;});
+var MSGID='upmsg';
+function msg(t){var m=document.getElementById(MSGID);if(m)m.textContent=t;}
+function shrink(file){return new Promise(function(res){var img=new Image();var u=URL.createObjectURL(file);img.onload=function(){var k=Math.min(1,640/Math.max(img.width,img.height));var c=document.createElement('canvas');c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(function(b){res(b||file);},'image/jpeg',0.86);};img.onerror=function(){URL.revokeObjectURL(u);res(file);};img.src=u;});}
+function doUpload(id,file){MSGID=id.charAt(0)==='m'&&/^m\d$/.test(id)?'msg-'+id:'upmsg';msg('アップロード中…');
+  shrink(file).then(function(b){return ASSETS.upload(b,{type:b.type||'image/jpeg'});})
+  .then(function(r){var old=PH[id];return DB.doc('photos/'+id).set({asset:r.id}).then(function(){PH[id]=r.id;renderAll();if(W[id])open(id);if(old){ASSETS.delete(old).catch(function(){});}});})
+  .catch(function(e){var c=e&&e.code;msg(c==='too_large'?'画像が大きすぎます（20MBまで）':c==='unsupported_type'?'PNG・JPEG・WebPの画像を選んでください':c==='quota_or_state'?'保存できる容量がいっぱいです':'うまく保存できませんでした。少し待ってもう一度試してください');});}
+function doRemove(id){var old=PH[id];if(!old)return;MSGID=/^m\d$/.test(id)?'msg-'+id:'upmsg';msg('外しています…');
+  DB.doc('photos/'+id).delete().then(function(){delete PH[id];renderAll();if(W[id])open(id);return ASSETS.delete(old);}).catch(function(){msg('うまく外せませんでした。もう一度試してください');});}
+
+/* GitHub版：images/ フォルダの画像を探して表示 */
+(function(){var keys=Object.keys(W).concat(M.map(function(m){return m.k;}));var ext=['jpg','png','webp','jpeg'];var tm=null;
+function rer(){clearTimeout(tm);tm=setTimeout(function(){renderAll();if(CUR)open(CUR);},120);}
+keys.forEach(function(k){(function tryi(i){if(i>=ext.length)return;var u='images/'+k+'.'+ext[i];var im=new Image();im.onload=function(){PH[k]=u;rer();};im.onerror=function(){tryi(i+1);};im.src=u;})(0);});})();
+document.getElementById('matches').addEventListener('change',function(e){var k=e.target.getAttribute('data-up');if(k&&e.target.files[0])doUpload(k,e.target.files[0]);});
+document.getElementById('matches').addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(b)doRemove(b.getAttribute('data-rm'));});
+/* tabs */
+var ids=['plan','card','roster','venue','guide','history','omake'];
+function show(id,push){if(ids.indexOf(id)<0)id='plan';
+  ids.forEach(function(x){document.getElementById(x).hidden=(x!==id);var t=document.getElementById('t-'+x);if(t)t.setAttribute('aria-selected',x===id?'true':'false');});
+  if(push)window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'auto'});
+  try{localStorage.setItem('tj2-tab',id);}catch(e){}}
+ids.forEach(function(x){var t=document.getElementById('t-'+x);if(t)t.addEventListener('click',function(){show(x,true);});});
+document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-go'),true);});});
+var first=(location.hash||'').replace('#','');
+if(ids.indexOf(first)<0){try{first=localStorage.getItem('tj2-tab')||'plan';}catch(e){first='plan';}}
+show(first,false);
+/* packing */
+document.querySelectorAll('#packing input').forEach(function(i){
+  try{i.checked=localStorage.getItem('tj2-'+i.id)==='1';}catch(e){}
+  i.addEventListener('change',function(){try{localStorage.setItem('tj2-'+i.id,i.checked?'1':'0');}catch(e){}});
+});
+})();
+</script>
+
+</body></html>
