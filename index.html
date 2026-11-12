@@ -54,8 +54,8 @@ p{margin:0}
 .facts span{white-space:nowrap}
 /* tabs */
 .tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--canvas);border-bottom:2px solid var(--line)}
-.tabs .wrap{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;padding-block:7px}
-.tab{appearance:none;font:inherit;color:var(--ink);background:var(--paper);border:2px solid var(--line);border-radius:10px;min-height:44px;font-weight:900;font-size:13.5px;cursor:pointer;padding:4px 0}
+.tabs .wrap{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;padding-block:7px}
+.tab{appearance:none;font:inherit;color:var(--ink);background:var(--paper);border:2px solid var(--line);border-radius:10px;min-height:44px;font-weight:900;font-size:12.5px;letter-spacing:-.02em;cursor:pointer;padding:4px 0}
 .tab[aria-selected="true"]{background:var(--ink);color:var(--canvas)}
 .tab:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--rope-b);outline-offset:2px}
 main .wrap{padding-block:16px 40px}
@@ -177,6 +177,7 @@ dialog::backdrop{background:rgba(10,10,14,.55)}
     <button class="tab" role="tab" id="t-venue" aria-controls="venue">会場</button>
     <button class="tab" role="tab" id="t-guide" aria-controls="guide">入門</button>
     <button class="tab" role="tab" id="t-history" aria-controls="history">歴史</button>
+    <button class="tab" role="tab" id="t-goods" aria-controls="goods">グッズ</button>
   </div>
 </nav>
 
@@ -467,6 +468,54 @@ dialog::backdrop{background:rgba(10,10,14,.55)}
     <p>1997年に旗揚げ。正式名は「Dramatic Dream Team」。笑いあり、仕掛けありのエンターテインメント色が強く、「文化系プロレス」と呼ばれています。</p>
     <p>本屋やキャンプ場などリングの外で戦う「路上プロレス」や、人形がレスラーとして戦うなど、型破りな企画でも有名。それでいて実力派の選手も多く、両国国技館での大会も開いています。今はノアと同じグループの団体です。</p>
     <p class="today"><b>今日のカードだと</b>メインの<button type="button" class="wn" data-w="masada">正田壮史</button>と、第5試合の<button type="button" class="wn" data-w="takechi">武知海青</button>がDDT所属。武知はTHE RAMPAGEのパフォーマーとの「二刀流」です。</p></div>
+</section>
+
+<section id="goods" role="tabpanel" aria-labelledby="t-goods" hidden>
+  <div class="card">
+    <h2>グッズ</h2>
+    <p class="lead">会場の売店と、すぐ近くの公式ショップの情報。</p>
+    <p class="small">この大会だけの限定グッズは、11月12日時点ではまだ発表されていません。発表されたら追記します。</p>
+  </div>
+  <div class="card">
+    <h3>会場の売店</h3>
+    <ul>
+      <li>会場内の特設売店で、新日本の公式グッズやパンフレットが買えます。</li>
+      <li>売店の時間は大会ごとに告知されます。開場（17:30）より前に売店を開く大会もあるので、当日の新日本公式のお知らせをチェック。</li>
+      <li>会場によっては、スペースの都合で一部の商品を扱わないこともあります。</li>
+      <li>グッズを確実に当日受け取れる「会場受け取りサービス」は、11月12日時点ではこの大会が受付対象に入っていません。</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>今日の出場選手の新作グッズ</h3>
+    <p class="small">10月30日の岐阜大会から発売された新作です。</p>
+    <dl class="terms">
+      <dt><button type="button" class="wn" data-w="uemura">上村優也</button></dt><dd>「NEW STANDARD WRESTLING」Tシャツ　4,000円<br><span class="small">白地に赤×黄。袖に「HEAT STORM」ロゴ</span></dd>
+      <dt><button type="button" class="wn" data-w="oiwa">大岩陵平</button></dt><dd>「NEW STANDARD WRESTLING」Tシャツ　4,000円<br><span class="small">上村とおそろいのシリーズ</span></dd>
+      <dt><button type="button" class="wn" data-w="oleg">ボルチン・オレッグ</button></dt><dd>「BARS」Tシャツ（白）　4,000円／「BARS」ジップパーカー　6,500円<br><span class="small">故郷カザフスタンの雪豹がモチーフ</span></dd>
+    </dl>
+    <p class="small">11月3日からは「蛍光ネームキーホルダー第2弾」（ジュニア選手とヤングライオン、全12種のランダム・1個800円）も発売中。</p>
+    <p class="small"><a href="https://shop.njpw.co.jp/" target="_blank" rel="noopener">闘魂SHOP（公式通販） ↗</a></p>
+  </div>
+  <div class="card">
+    <h3>試合前に寄れる！闘魂SHOP水道橋店</h3>
+    <p>新日本の公式ショップ。水道橋駅のすぐそばで、後楽園ホールからも歩いてすぐです。</p>
+    <dl class="terms">
+      <dt>場所</dt><dd>千代田区神田三崎町3-3-20 VORT水道橋Ⅱ 1階</dd>
+      <dt>営業時間</dt><dd>11:00〜20:00</dd>
+    </dl>
+    <p><b>11月13日から「棚橋社長くじ2026」</b><br>5,000円お買い上げごとにくじを1回。A賞は直筆サイン入りTシャツで、ハズレなしで必ず棚橋社長グッズがもらえます。参加した人全員に自画像イラストステッカーのプレゼントも。水道橋店だけの企画で、なくなり次第終了です。</p>
+  </div>
+  <div class="card">
+    <h3>ファンクラブ会員限定：棚橋社長の撮影会</h3>
+    <p>この日の会場では、新日本のファンクラブ「Team NJPW」の会員限定で、棚橋社長との撮影会があります。</p>
+    <dl class="terms">
+      <dt>受付</dt><dd>16:35〜16:45（1階エレベーターホール）</dd>
+      <dt>開始</dt><dd>16:50ごろ</dd>
+      <dt>必要なもの</dt><dd>デジタル会員証、身分証明書、この大会のチケットの3点</dd>
+    </dl>
+    <p class="small">定員になったら受付終了。会員本人だけが参加できます。</p>
+  </div>
+  <p class="small">出典：新日本プロレス公式のお知らせ（10月30日・11月2日・11月12日）</p>
 </section>
 
 <section id="omake" role="tabpanel" aria-label="おまけ" hidden>
@@ -785,7 +834,7 @@ keys.forEach(function(k){(function tryi(i){if(i>=ext.length)return;var u='images
 document.getElementById('matches').addEventListener('change',function(e){var k=e.target.getAttribute('data-up');if(k&&e.target.files[0])doUpload(k,e.target.files[0]);});
 document.getElementById('matches').addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(b)doRemove(b.getAttribute('data-rm'));});
 /* tabs */
-var ids=['plan','card','roster','venue','guide','history','omake'];
+var ids=['plan','card','roster','venue','guide','history','goods','omake'];
 function show(id,push){if(ids.indexOf(id)<0)id='plan';
   ids.forEach(function(x){document.getElementById(x).hidden=(x!==id);var t=document.getElementById('t-'+x);if(t)t.setAttribute('aria-selected',x===id?'true':'false');});
   if(push)window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'auto'});
