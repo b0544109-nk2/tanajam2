@@ -120,6 +120,8 @@ dl.terms dd{margin:0;font-size:14px}
 .steps .bh{display:block;border-left:4px solid var(--rope-b);background:var(--tint);border-radius:8px;padding:6px 10px;margin:6px 0;font-size:14px}
 .steps .bh.h{border-left-color:var(--rope-r)}
 .steps .bh i{font-style:normal;font-weight:900;display:block;font-size:12.5px}
+.nk2{background:var(--tint);border-left:4px solid var(--rope-r);border-radius:8px;padding:8px 10px}
+.nk2 p{margin:0 0 6px}
 .tc{background:var(--gold-tint);border-left:4px solid var(--gold);border-radius:8px;padding:8px 10px}
 .eras{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .era{background:var(--paper);border:2px solid var(--line);border-left:8px solid var(--ec);border-radius:var(--r);padding:13px 15px;display:grid;gap:7px;box-shadow:var(--sh)}
@@ -422,6 +424,7 @@ dialog::backdrop{background:rgba(10,10,14,.55)}
     <h3>観戦の楽しみ方</h3>
     <ul class="tidy">
       <li>好きな選手の名前を叫んでOK。入場曲で手拍子するとすぐ溶け込めます</li>
+      <li><b>ピンチの選手に名前コール</b>：応援している選手が攻められているときは、会場から「〇〇！〇〇！」と手拍子つきの名前コールが起こります。一緒に叫んで背中を押そう。カウント2.9で返したら大歓声で！</li>
       <li>悪役（ヒール）にはブーイングで応えるのも楽しみ方のひとつ。H.O.Tの試合ではとくに</li>
       <li>フォールの「ワン！ツー！」は一緒に数えると盛り上がります</li>
       <li>選手ごとのおなじみのコールもあります。今日なら矢野の「Y！T！R！」、藤波さんへの「ドラゴン！」。選手のプロフィールに書いてあります</li>
@@ -794,7 +797,7 @@ document.getElementById('matches').innerHTML=M.map(function(m,mi){var mk=m.k;
   if(m.tba){body='<div class="tba">出場選手は当日発表</div><div class="side"><span class="teamname">出場しそうな選手（しおり作成者の予想）</span><div class="grid">'+['taichi','okhan'].map(chip).join('')+'</div></div>';}
   else{body='<div class="vs"><div class="side">'+(m.an?'<span class="teamname">'+m.an+'</span>':'')+m.a.map(chip).join('')+'</div><span class="vsx">VS</span><div class="side r">'+(m.bn?'<span class="teamname">'+m.bn+'</span>':'')+m.b.map(chip).join('')+'</div></div>';}
   var pic=(PH[mk]?'<img class="mpic" src="'+PH[mk]+'" alt="'+m.type+'の画像" loading="lazy">':'')+((ASSETS&&DB)?'<div class="mup"><label class="upbtn sm" for="up-'+mk+'">'+(PH[mk]?'画像を差し替える':'この試合の画像を入れる')+'</label><input type="file" accept="image/png,image/jpeg,image/webp" id="up-'+mk+'" data-up="'+mk+'" hidden>'+(PH[mk]?'<button type="button" class="rmbtn sm" data-rm="'+mk+'">外す</button>':'')+'<span class="small" id="msg-'+mk+'"></span></div>':'');
-  return '<article class="match'+(m.title?' title':'')+(m.main?' main':'')+'">'+head+pic+'<div class="mbody">'+body+'<div class="mtext"><h4>見どころ</h4><p>'+m.pt+'</p>'+(m.tc?'<h4>棚橋社長の見どころ</h4><p class="tc">'+m.tc+'</p>':'')+'<h4>ここを見て</h4><p>'+m.w+'</p></div></div></article>';
+  return '<article class="match'+(m.title?' title':'')+(m.main?' main':'')+'">'+head+pic+'<div class="mbody">'+body+'<div class="mtext"><h4>見どころ</h4><p>'+m.pt+'</p>'+(m.nk?'<h4>nk2的注目選手</h4><div class="nk2">'+m.nk+'</div>':'')+(m.tc?'<h4>棚橋社長の見どころ</h4><p class="tc">'+m.tc+'</p>':'')+'<h4>ここを見て</h4><p>'+m.w+'</p></div></div></article>';
 }).join('');
 /* roster */
 var order=[
