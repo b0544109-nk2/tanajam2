@@ -21,6 +21,22 @@
 - 1枚あたり1MB以下くらいが目安（大きいとスマホで表示が遅くなります）
 - 反映されないときは、ページを再読み込み（キャッシュで古い表示が残ることがあります）
 
+## タブや選手へ直接飛ぶURL
+
+URLの最後に `#タブ名` を付けると、そのタブが開いた状態で表示されます（`?tab=タブ名` でもOK）。
+
+| URL | 開くタブ |
+|---|---|
+| `https://b0544109-nk2.github.io/tanajam2/#plan` | 概要 |
+| `https://b0544109-nk2.github.io/tanajam2/#card` | カード |
+| `https://b0544109-nk2.github.io/tanajam2/#roster` | 選手 |
+| `https://b0544109-nk2.github.io/tanajam2/#venue` | 会場 |
+| `https://b0544109-nk2.github.io/tanajam2/#guide` | 入門 |
+| `https://b0544109-nk2.github.io/tanajam2/#history` | 歴史 |
+| `https://b0544109-nk2.github.io/tanajam2/#goods` | グッズ |
+
+選手の画像ファイル名と同じ名前を付けると、その選手のプロフィールが開きます（例：`#oiwa` で大岩陵平）。
+
 ## 試合の画像（横長がおすすめ。16:9くらい）
 
 | ファイル名 | 試合 |

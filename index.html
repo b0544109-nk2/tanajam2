@@ -878,12 +878,17 @@ var ids=['plan','card','roster','venue','guide','history','goods','omake'];
 function show(id,push){if(ids.indexOf(id)<0)id='plan';
   ids.forEach(function(x){document.getElementById(x).hidden=(x!==id);var t=document.getElementById('t-'+x);if(t)t.setAttribute('aria-selected',x===id?'true':'false');});
   if(push)window.scrollTo({top:document.querySelector('.tabs').offsetTop,behavior:'auto'});
-  try{localStorage.setItem('tj2-tab',id);}catch(e){}}
+  try{localStorage.setItem('tj2-tab',id);}catch(e){}
+  if(push&&id!=='omake'){try{history.replaceState(null,'','#'+id);}catch(e){}}}
 ids.forEach(function(x){var t=document.getElementById('t-'+x);if(t)t.addEventListener('click',function(){show(x,true);});});
 document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-go'),true);});});
-var first=(location.hash||'').replace('#','');
+var qtab=null;try{qtab=new URLSearchParams(location.search).get('tab');}catch(e){}
+var first=qtab||(location.hash||'').replace('#','');
+var firstW=null;if(W[first]){firstW=first;first='roster';}
 if(ids.indexOf(first)<0){try{first=localStorage.getItem('tj2-tab')||'plan';}catch(e){first='plan';}}
 show(first,false);
+if(firstW)setTimeout(function(){open(firstW);},300);
+window.addEventListener('hashchange',function(){var h=(location.hash||'').replace('#','');if(W[h]){open(h);}else if(ids.indexOf(h)>=0){show(h,true);}});
 /* packing */
 document.querySelectorAll('#packing input').forEach(function(i){
   try{i.checked=localStorage.getItem('tj2-'+i.id)==='1';}catch(e){}
