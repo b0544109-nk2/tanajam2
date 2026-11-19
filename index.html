@@ -800,7 +800,7 @@ var M=[
  {k:'match6',nk:"<p><b>矢野通</b>：愛すべき憎まれ役って感じ。今回は、相手のシュン・スカイウォーカーがこの団体（新日本）を否定し続けているから、「悪い矢野」モードで来るのか、いつものおちゃらけた感じで臨むのかに注目！</p>",tc:"シュンの相手はクセ者・矢野。ここはぜひベルトをかけてほしい。金髪になって「怖い矢野通」を見せた矢野の実力は、戦ってきた自分がいちばんよく知っている。まだまだ頑張ってほしい、とエールを送っています。",no:'第6試合（セミ）',type:'NJPW WORLD認定TV選手権試合',rule:'15分一本勝負',title:true,a:['shun'],b:['yano'],an:'王者',bn:'挑戦者',
   pt:'9月にベルトを奪ったシュンが「新日本たいしたことない」「矢野通、オマエのことなんか誰も知らない」と挑発。矢野は10月12日の両国でシュンから直接ピンフォールを奪い、「オマエから挑戦してこい」。プロレス界きってのクセ者同士の初防衛戦です。',
   w:'15分の時間制限と、挑発合戦の心理戦。矢野がキャリア25年目でTV王座を初めて巻くか'},
- {k:'match7',nk:"<p><b>藤田晃生</b>：やんちゃな風貌に、ヤンチャなファイトスタイル。今日はヘビー級の大きい選手ばかりのメインで、自分より体の大きい相手にもガンガンぶつかっていく姿に注目！納得できないことには先輩にも噛みつく反骨心の持ち主で、「希望もヘイトも全部俺が背負う」と言い切る男です。</p>",tc:"最近のTMDKは勢いがすごい（ザックは団体最高峰のベルト、藤田はジュニアの大会、大岩はG1で優勝）。強すぎるなら、TMDK同士で戦わせればいいという発想。そこに大岩とずっと組んできた清宮、藤田と「ずっとも」の正田を加えて、「夢の6人タッグマッチが完成しました！」。TANAHASHI JAMだからこそのカードです。",no:'メイン（第7試合）',type:'スペシャル6人タッグマッチ',rule:'30分一本勝負',main:true,a:['zack','fujita','masada'],b:['oiwa','jackson','kiyomiya'],
+ {k:'match7',nk:"<p><b>藤田晃生</b>：やんちゃな風貌に、ヤンチャなファイトスタイル。今日はヘビー級の大きい選手ばかりのメインで、自分より体の大きい相手にもガンガンぶつかっていく姿に注目！納得できないことには先輩にも噛みつく反骨心の持ち主で、「希望もヘイトも全部俺が背負う」と言い切る男。</p>",tc:"最近のTMDKは勢いがすごい（ザックは団体最高峰のベルト、藤田はジュニアの大会、大岩はG1で優勝）。強すぎるなら、TMDK同士で戦わせればいいという発想。そこに大岩とずっと組んできた清宮、藤田と「ずっとも」の正田を加えて、「夢の6人タッグマッチが完成しました！」。TANAHASHI JAMだからこそのカードです。",no:'メイン（第7試合）',type:'スペシャル6人タッグマッチ',rule:'30分一本勝負',main:true,a:['zack','fujita','masada'],b:['oiwa','jackson','kiyomiya'],
   pt:'TMDKが敵味方に分かれて、新日本・NOAH・DDTの越境6人タッグ。ザックの隣には藤田と「ズッ友」の正田（DDT）、大岩の隣にはNOAH修業に導いてくれた恩人・清宮（NOAH）。',
   w:'大岩はザックにシングルで勝ったことがなく、越えたい壁。ヤングライオン時代から切磋琢磨した同期・藤田との対角も'}
 ];
@@ -816,7 +816,7 @@ document.getElementById('matches').innerHTML=M.map(function(m,mi){var mk=m.k;
   if(m.tba){body='<div class="tba">出場選手は当日発表</div><div class="side"><span class="teamname">出場しそうな選手（しおり作成者の予想）</span><div class="grid">'+['taichi','okhan'].map(chip).join('')+'</div></div>';}
   else{body='<div class="vs"><div class="side">'+(m.an?'<span class="teamname">'+m.an+'</span>':'')+m.a.map(chip).join('')+'</div><span class="vsx">VS</span><div class="side r">'+(m.bn?'<span class="teamname">'+m.bn+'</span>':'')+m.b.map(chip).join('')+'</div></div>';}
   var pic=(PH[mk]?'<img class="mpic" src="'+PH[mk]+'" alt="'+m.type+'の画像" loading="lazy">':'')+((ASSETS&&DB)?'<div class="mup"><label class="upbtn sm" for="up-'+mk+'">'+(PH[mk]?'画像を差し替える':'この試合の画像を入れる')+'</label><input type="file" accept="image/png,image/jpeg,image/webp" id="up-'+mk+'" data-up="'+mk+'" hidden>'+(PH[mk]?'<button type="button" class="rmbtn sm" data-rm="'+mk+'">外す</button>':'')+'<span class="small" id="msg-'+mk+'"></span></div>':'');
-  return '<article class="match'+(m.title?' title':'')+(m.main?' main':'')+'">'+head+pic+'<div class="mbody">'+body+'<div class="mtext"><h4>見どころ</h4><p>'+m.pt+'</p>'+(m.nk?'<h4>nk2的注目選手</h4><div class="nk2">'+m.nk+'</div>':'')+(m.tc?'<h4>棚橋社長の見どころ</h4><p class="tc">'+m.tc+'</p>':'')+'<h4>ここを見て</h4><p>'+m.w+'</p></div></div></article>';
+  return '<article class="match'+(m.title?' title':'')+(m.main?' main':'')+'">'+head+pic+'<div class="mbody">'+body+'<div class="mtext"><h4>見どころ</h4><p>'+m.pt+'</p>'+(m.nk?'<h4>nk2🤠的注目選手</h4><div class="nk2">'+m.nk+'</div>':'')+(m.tc?'<h4>棚橋社長の見どころ</h4><p class="tc">'+m.tc+'</p>':'')+'<h4>ここを見て</h4><p>'+m.w+'</p></div></div></article>';
 }).join('');
 /* roster */
 var order=[
