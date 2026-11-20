@@ -53,6 +53,15 @@ URLの最後に `#タブ名` を付けると、そのタブが開いた状態で
 
 | ファイル名 | 選手 | 所属 |
 |---|---|---|
+| `images/fale.jpg` | ドン・ファレ | モンスターランボー出場 |
+| `images/cobb.jpg` | ジェフ・コブ | モンスターランボー出場 |
+| `images/owens.jpg` | チェーズ・オーエンズ | モンスターランボー出場 |
+| `images/oskar.jpg` | OSKAR | モンスターランボー出場 |
+| `images/archer.jpg` | ランス・アーチャー | モンスターランボー出場 |
+| `images/zayne.jpg` | アレックス・ゼイン | モンスターランボー出場 |
+| `images/henare.jpg` | HENARE | モンスターランボー出場 |
+| `images/jake.jpg` | ジェイク・リー | モンスターランボー出場 |
+| `images/robbiex.jpg` | ロビー・エックス | モンスターランボー出場 |
 | `images/tanahashi.jpg` | 棚橋弘至（社長・プロデューサー） | 新日本プロレス社長 |
 | `images/umino.jpg` | 海野翔太 | 新日本 本隊 |
 | `images/axe.jpg` | アックス・ワン | 台湾から修業中 |

@@ -601,7 +601,7 @@ dialog::backdrop{background:rgba(10,10,14,.55)}
 
 <script>
 (function(){
-var U={tmdk:{n:'TMDK',c:'--u-tmdk'},hot:{n:'H.O.T',c:'--u-hot'},honta:{n:'新日本 本隊',c:'--u-honta'},ext:{n:'他団体',c:'--u-ext'},legend:{n:'レジェンド',c:'--u-legend'},tw:{n:'台湾から修業中',c:'--u-tw'},ue:{n:'UNITED EMPIRE',c:'--u-ue'},cand:{n:'ランボー出場予想',c:'--gold'},pres:{n:'新日本プロレス社長',c:'--gold'}};
+var U={tmdk:{n:'TMDK',c:'--u-tmdk'},hot:{n:'H.O.T',c:'--u-hot'},honta:{n:'新日本 本隊',c:'--u-honta'},ext:{n:'他団体',c:'--u-ext'},legend:{n:'レジェンド',c:'--u-legend'},tw:{n:'台湾から修業中',c:'--u-tw'},ue:{n:'UNITED EMPIRE',c:'--u-ue'},cand:{n:'ランボー出場予想',c:'--gold'},pres:{n:'新日本プロレス社長',c:'--gold'},unb:{n:'Unbound Co.',c:'--rope-b'},rambo:{n:'モンスターランボー出場',c:'--rope-r'}};
 function NJ(id){return {t:'新日本プロレス公式プロフィール',u:'https://www.njpw.co.jp/profile/'+id};}
 var W={
 umino:{n:'海野翔太',en:'Shota Umino',u:'honta',org:'新日本プロレス',av:'海',
@@ -784,14 +784,50 @@ tanahashi:{n:'棚橋弘至',en:'Hiroshi Tanahashi',u:'pres',org:'新日本プロ
  y:['1月4日、東京ドームでオカダ・カズチカに敗れて引退','11月19日、自らプロデュースする「TANAHASHI JAM」の第2弾を後楽園ホールで開催'],
  m:'ハイフライフロー、テキサスクローバーホールド、ドラゴン・スクリュー、スリングブレイド',
  t:'この大会のプロデューサー。セミで防衛戦をするシュンからは「責任を取って矢野のセコンドにつけ」と要求されていて、当日どう動くかにも注目',l:{t:'Wikipedia「棚橋弘至」',u:'https://ja.wikipedia.org/wiki/%E6%A3%9A%E6%A9%8B%E5%BC%98%E8%87%B3'}},
+fale:{n:'ドン・ファレ',en:'Don Fale',u:'hot',org:'新日本プロレス',av:'フ',
+ p:[['生まれ','1982年1月8日、トンガ出身'],['体格','193cm・170kg'],['デビュー','2010年4月4日']],
+ d:['ラグビー経験を活かした170kgの超巨体ファイター。かつての「バッドラック・ファレ」','2013年に結成された、新日本を代表するヒールユニットの創設メンバーのひとり','穏やかな外見とは裏腹の猛烈なパワーで、棚橋社長もたびたび苦しめられた'],
+ y:[],m:'',t:'モンスターランボーの1番手として、ジェフ・コブとの巨漢対決で口火を切った',l:NJ(580248)},
+cobb:{n:'ジェフ・コブ',en:'Jeff Cobb',u:'unb',org:'新日本プロレス',av:'コ',
+ p:[['生まれ','1982年7月11日、アメリカ・ハワイ州出身'],['体格','178cm・119kg'],['デビュー','2009年6月']],
+ d:['2004年アテネ五輪にレスリングのグアム代表として出場した実力者','119kgとは思えない身軽さと、豪快なスープレックスが武器','TV王座、NEVER無差別級、タッグのベルトを経験'],
+ y:[],m:'ツアー・オブ・ジ・アイランド、各種スープレックス',t:'モンスターランボーの1番手。アレックス・ゼインにトップロープ越しに落とされて脱落',l:NJ(121245)},
+owens:{n:'チェーズ・オーエンズ',en:'Chase Owens',u:'hot',org:'新日本プロレス',av:'チ',
+ p:[['生まれ','1990年3月7日、アメリカ・テネシー州出身'],['体格','185cm・93kg'],['デビュー','2007年']],
+ d:['シングルでもタッグでも試合巧者ぶりを見せるユーティリティプレイヤー','ジュニアからヘビー級に転向。タッグのベルトも巻いた'],
+ y:[],m:'バックブリーカー、ハイヌーン、ラストテスタメント',t:'モンスターランボーに3番手で登場',l:NJ(739)},
+oskar:{n:'OSKAR',en:'OSKAR',u:'unb',org:'新日本プロレス',av:'O',
+ p:[['生まれ','1998年7月14日、ドイツ・ハンブルク出身'],['体格','201cm・115kg'],['デビュー','2019年3月（ニュージーランド）']],
+ d:['身長2m超えのドイツ人。ニュージーランドの道場でデビューし、新日本の野毛道場に入門','ヤングライオン時代は「オスカー・ロイベ」。デビュー戦では大岩・藤田と組んでいた','2025年8月に海外修行から凱旋し、OSKARに改名'],
+ y:[],m:'',t:'モンスターランボーに4番手で登場。試合後のコメントスペースでランス・アーチャーと「本物のモンスター」をめぐって乱闘',l:NJ(594976)},
+archer:{n:'ランス・アーチャー',en:'Lance Archer',u:'ext',org:'AEW',av:'ラ',
+ p:[['出身','アメリカ・テキサス州'],['体格','2mを超える巨体']],
+ d:['アメリカの団体AEW所属。かつては新日本のヒールユニットで、タッグのベルトを何度も巻いた','アレックス・ゼインとのタッグ「モンスター・ソース」でタッグリーグに参戦','決めゼリフは「EVERYBODY DIES（全員死ぬ）」'],
+ y:[],m:'',t:'モンスターランボーに5番手で登場。試合後はOSKARと「本物のモンスター」をめぐって乱闘',l:{t:'Wikipedia「ランス・アーチャー」',u:'https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%BB%E3%82%A2%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC'}},
+zayne:{n:'アレックス・ゼイン',en:'Alex Zayne',u:'ext',org:'フリー',av:'ゼ',
+ p:[['生まれ','1986年10月28日、アメリカ・ケンタッキー州出身'],['体格','186cm・92kg'],['デビュー','2007年3月31日']],
+ d:['身軽な空中殺法が持ち味。アメリカの「NJPW STRONG」で活躍してきた','「イタダキマス」「共有しますか？」など、日本語を使ったSNSで人気に','ランス・アーチャーとのタッグ「モンスター・ソース」'],
+ y:[],m:'TACOドライバー、シナモンツイスト、バッハブラスト',t:'モンスターランボーに6番手で登場。ジェフ・コブをトップロープ越しに落とした',l:NJ(224578)},
+henare:{n:'HENARE',en:'HENARE',u:'ue',org:'新日本プロレス',av:'H',
+ p:[['生まれ','1992年8月5日、ニュージーランド・オークランド出身'],['体格','180cm・105kg'],['デビュー','2012年9月1日']],
+ d:['レスリングとMMAがベース。ラグビー仕込みのタックルが武器','2016年に新日本に入団。若手時代は「トーア・ヘナーレ」として、中西・真壁らのパートナーも務めた','NEVER無差別級やタッグのベルトを経験'],
+ y:[],m:'Streets of Rage、バーザーカーボム、ランペイジ（ラグビータックル）',t:'モンスターランボーに7番手で登場',l:NJ(435306)},
+jake:{n:'ジェイク・リー',en:'Jake Lee',u:'ue',org:'新日本プロレス',av:'ジ',
+ p:[['生まれ','1989年1月19日、北海道北見市出身'],['体格','192cm・100kg'],['デビュー','2011年8月17日 全日本プロレス']],
+ d:['ウエイトリフティングの実績を買われて全日本にスカウトされた','全日本、ノア、新日本と3団体を渡り歩き、全日本とノアでは団体最高峰のベルトを巻いた','2024年に新日本に正式入団。試合の前後で記憶が飛ぶ（？）独特のキャラ'],
+ y:[],m:'FBS、D4C、ジャイアントキリング',t:'モンスターランボーに9番手で登場。最後まで残ったが、ロビー・エックスに場外へ落とされて準優勝',l:NJ(186188)},
+robbiex:{n:'ロビー・エックス',en:'Robbie X',u:'unb',org:'新日本プロレス',av:'ロ',
+ p:[['生まれ','1995年1月6日、イギリス・リンカンシャー州出身'],['体格','165cm・78kg'],['デビュー','2008年']],
+ d:['イギリス出身のジュニアヘビー級。スピードと空中殺法が武器'],
+ y:[],m:'X EXPRESS',t:'モンスターランボーに10番手（最後）で登場。ただ1人のジュニアながら、O-カーンとジェイク・リーを場外に落として優勝！',l:NJ(381108)},
 okhan:{n:'グレート-O-カーン',en:'Great-O-Khan',u:'ue',org:'新日本プロレス',av:'O',
  p:[['生まれ','不明（公式発表）'],['体格','188cm・120kg']],
  d:['弁髪とひげのチンギス・カンを思わせる風貌。自分を「余」と呼び、「ひれ伏せ愚民どもっ！」と罵る傍若無人なヒール','2022年、武蔵小杉駅で酔っ払いに連れ去られそうになった女の子を助け、パンケーキの話で落ち着かせて警察から感謝状。その後、試合でその感謝状を武器や盾にした','趣味はアニメ、マンガ、ゲーム、VTuber（ホロライブの宝鐘マリン、大空スバル推し）、麻雀、激辛など。技名にも「大空スバル式羊殺し」','タッグのベルトや、今日かけられるTV王座も巻いたことがある'],
  y:['6月に仲間とタッグのベルトを獲得したが、10月に奪い返された'],
  m:'エリミネーター、モンゴリアンチョップ、崩壊、玉座、大空スバル式羊殺し',
- t:'UNITED EMPIRE勢はカードに入っていませんが、モンスターの名にぴったりの巨体。ランボーに出てくるか',l:NJ(265105)},
+ t:'モンスターランボーに8番手で登場。最後の3人まで残ったが、ロビー・エックスにトップロープ越しに落とされた',l:NJ(265105)},
 };
-var NK={"umino": "不屈のライオン", "axe": "台湾プロレス界No.1のイケメン", "fujinami": "炎の飛龍", "uemura": "HEAT STORM", "wolf": "五輪金メダリスト", "takechi": "二刀流レスラー", "narita": "SOULED OUT", "sanada": "COLD BLOODED snake", "yujiro": "THE TOKYO PIMPS", "kanemaru": "ヒールマスター", "shun": "天空歩人", "yano": "敏腕プロデューサー", "zack": "ザ・フロントマン", "fujita": "Japanese young punk", "masada": "BABY GIRL", "oiwa": "THE GRIP", "jackson": "BIG JAG", "kiyomiya": "狂乱のプリンス", "makabe": "暴走キングコング", "kojima": "剛腕", "goto": "混沌の荒武者", "taguchi": "ファンキー・ウェポン", "taichi": "愛を捨てた聖帝", "okhan": "ドミネーター", "nagata": "ブルージャスティス", "yoshihashi": "HEAD HUNTER", "yoh": "DIRECT DRIVE", "oleg": "BARS", "tanahashi": "100年に一人の逸材"};
+var NK={"umino": "不屈のライオン", "axe": "台湾プロレス界No.1のイケメン", "fujinami": "炎の飛龍", "uemura": "HEAT STORM", "wolf": "五輪金メダリスト", "takechi": "二刀流レスラー", "narita": "SOULED OUT", "sanada": "COLD BLOODED snake", "yujiro": "THE TOKYO PIMPS", "kanemaru": "ヒールマスター", "shun": "天空歩人", "yano": "敏腕プロデューサー", "zack": "ザ・フロントマン", "fujita": "Japanese young punk", "masada": "BABY GIRL", "oiwa": "THE GRIP", "jackson": "BIG JAG", "kiyomiya": "狂乱のプリンス", "makabe": "暴走キングコング", "kojima": "剛腕", "goto": "混沌の荒武者", "taguchi": "ファンキー・ウェポン", "taichi": "愛を捨てた聖帝", "okhan": "ドミネーター", "nagata": "ブルージャスティス", "yoshihashi": "HEAD HUNTER", "yoh": "DIRECT DRIVE", "oleg": "BARS", "tanahashi": "100年に一人の逸材", "cobb": "Unbound Juggernaut", "owens": "Lone Star Outlaw", "zayne": "ザ・ソース", "jake": "SILENT JESTER", "henare": "Mauler", "robbiex": "Extreme", "archer": "マーダーホーク・モンスター"};
 var EMBED=true;
 var VZ={"umino": [["l4dtVmQhy54", "Second Chapter"], ["776pmDQZYPY", "デスライダー"]], "uemura": [["jrtNSoYgL9Y", "カンヌキスープレックスホールド"], ["fFPwB86aaAY", "フランケンシュタイナー"]], "narita": [["dFz52J29dH8", "地獄の断頭台"], ["nxoeDUGL_fU", "ダブルクロス"], ["CL49K7VTrYs", "クロス式膝十字固め"], ["A6ttZHE3kts", "コブラツイスト"], ["jJyGd_WZ1SM", "フロントスープレックスホールド"]], "sanada": [["qC1-0zxTFo4", "Skull End"], ["B95RDpkgA5k", "デッドフォール"], ["iMF64rZb2Vo", "シャイニングウィザード"], ["fJ2f7XfJfGU", "パラダイスロック"]], "yujiro": [["VGtYAsWB9vk", "ピンプジュース"], ["mEUttLO1TeI", "マイアミシャイン"]], "kanemaru": [["xjzHM0xDHpI", "旋回式DDT"], ["5ERQzXxItUA", "ムーンサルトプレス"], ["jgs7XEiDhsc", "足4の字固め"]], "yano": [["kYH8wK74CKg", "鬼殺し"], ["kmfAQsJf3A0", "マンハッタン・ドロップ"]], "zack": [["RCJRooM5rCI", "ザックドライバー"], ["mX8BucqGpaY", "セイバードライバー"], ["JVJPoBsz-TU", "クラーキーキャット（G1 34優勝テッカー版）"]], "fujita": [["pu5q7cBaVp4", "ネ申スペシャル"], ["3g2wOkT-RTE", "Abandon Hope"], ["Xz4wZyeQuSo", "Thrill Ride"]], "oiwa": [["Z5QmekhcQuY", "THE GRIP"], ["c5DgBNwxNvI", "アーククラッチ"], ["RdPyXhk4XCQ", "天山スープレックス"]], "jackson": [["1cfVKwLVSF4", "セントーン"]], "kiyomiya": [["Eeo3lH8Qw9U", "変形シャイニングウィザード"]], "makabe": [["gj5_vMJORvg", "キングコングニードロップ"]], "kojima": [["yl2mMRA5Ubo", "ラリアット"]], "goto": [["7352fEHDZZI", "GTR"], ["l8Wfyml_A6I", "GTR改"], ["H9hQog_ZF3Q", "昇天・改"], ["wHaYYu0cBHA", "回天"]], "taguchi": [["LTWUyEqS61A", "ヒップアタック"], ["Q0INAgwcQuo", "オーマイ＆ガーアンクル"], ["ah3KF8yJWAE", "どどんスズスロウン"], ["Ru8aSGzELKs", "回転地獄ケツ"]], "taichi": [["O4IDnVNQYvk", "天翔十字鳳"], ["yzSppsca1VE", "ブラックメフィスト"], ["94HJjBJY5wI", "デンジャラスバックドロップ"], ["FvA5tBIzb84", "アックスボンバー"]], "okhan": [["lptCV51NgT4", "大空スバル式羊殺し"], ["CSFD8lQPLjk", "TTD"]], "oleg": [["xSW3Tr6vflg", "カミカゼ"], ["YoE2CGNz6A4", "バーディクト"]], "nagata": [["F2Ogm1yqnpA", "ナガタロックⅡ"]], "yoshihashi": [["gpmedcKiVE8", "カルマ"], ["qYcRYmgiPYk", "頂狩"], ["opqw8gl4Bh8", "スワントーンボム"], ["xwhPxeoYsO4", "バタフライロック"], ["JMzPkcZxKtE", "緊箍児"], ["l70SqJAesS0", "カナディアンデストロイヤー"], ["EaSRTdp-OkM", "逆水平チョップ"]], "yoh": [["bUhnWfeRzfo", "DIRECT DRIVE"], ["AKBJ05st5ic", "ファルコンアロー式牛殺し"]]};
 function ytv(id,t,cap,vert){var u='https://www.youtube.com/'+(vert?'shorts/'+id:'watch?v='+id+(t?'&t='+t+'s':''));
@@ -813,7 +849,7 @@ var M=[
  {k:'match3',r:"JUSTICE タグチジャパンの勝ち（10分10秒 真壁がラリアットで松本から）",ru:"https://www.njpw.co.jp/card-result/681075",rp:"田口監督の采配で、タグチジャパンは連係プレーを披露。後藤革命軍もチームワークで対抗します。途中、YOHがドラゴンリングインを2度くり返し、2度とも田口のヒップアタックを食らう一幕も。終盤、松本が真壁に水車落としを決めて奮闘しましたが、最後は真壁のラリアットで沈みました。",bs:"<p><b>田口</b>：後藤革命軍の一員でもあるので、どちらのチームでもやれるのが「技術のうち」。</p><p><b>真壁</b>：松本に「物わかりのいい後輩なんてどうでもいい。本当のテメェを見せろ」。お前の一番の売りは負けん気、もっと粘れ、伸びしろに自分でふたをするな、と熱いゲキ。</p><p><b>永田</b>：3年ぶりのタッグリーグへの試運転。松本には「当たりが弱い、もっとガンガン来てほしかった」と辛口。</p><p><b>小島</b>：キャリア35周年。プロレスをして無事に帰る、それを35年続けてきた尊さを語り、最後は「いっちゃうぞ、バカヤロー！」。</p><p><b>後藤</b>：「後藤革命とはな、ベテランの意地なんだよ」。ついに後藤革命の正体が明かされた…？ その意味で、第三世代も真壁も後藤革命軍なんだそうです。</p><p class=\"small\">YOH、松本はノーコメント。</p>",no:'第3試合',type:'後藤革命軍 vs JUSTICE タグチジャパン',rule:'20分一本勝負',a:['matsumoto','yoh','yoshihashi','goto'],b:['makabe','kojima','nagata','taguchi'],an:'後藤革命軍',bn:'JUSTICE タグチジャパン',
   pt:'<b>後藤革命軍</b>は、後藤が掲げる「後藤革命」の仲間たち。…なんですが、後藤革命がいったい何なのかは、たぶん誰にもわかりません。後藤本人の認識では、YOSHI-HASHI、YOH、女子プロレスラー、新潟のご当地ヒーロー、書道家の応援団長、革命タオルを掲げるファンまでメンバーで、しかも今日の対戦相手の田口まで入っているという謎の集団です。若手の松本は「近くでプロレスを学びたい」と自ら志願して加わりました。<br><b>タグチジャパン</b>は、田口が「監督」を務めるチーム。名前のとおりサッカー日本代表にあやかっていて、試合前に円陣を組んだりします。来る者拒まずで、そのときどきで選手が「招集」されるゆるい集まりです。<b>JUSTICE</b>は、永田の二つ名「ブルージャスティス」から。真壁・小島・永田・田口、4人合わせてキャリア120年超えの大ベテランに、若い松本がどこまで食らいつけるか。',
   w:'小島の「いっちゃうぞバカヤロー」、永田の敬礼、田口のヒップアタックなど、ベテランのお約束が全部見られるかも'},
- {k:'match4',r:"ロビー・エックスが優勝（14分42秒、最後はジェイク・リーをオーバー・ザ・トップロープ）",ru:"https://www.njpw.co.jp/card-result/677051",rp:"参加したのは10人。ドン・ファレとジェフ・コブの巨漢対決から始まり、チェーズ・オーエンズ、OSKAR、ランス・アーチャー、アレックス・ゼイン、HENARE、グレート-O-カーン、ジェイク・リーとヘビー級が次々に登場。最後に入ってきたのは、ただ1人のジュニアヘビー級、ロビー・エックス。残っていたO-カーンをトップロープ越しに落とし、ジェイク・リーもスワンダイブのミサイルキックで場外へ落として、「モンスター」たちを制しました。<br>しおりの予想は、O-カーンが的中、タイチは外れでした。",bs:"<p><b>ロビー・エックス</b>：「これからは『エクストリーム・モンスター・ジュニアヘビー級』と名乗ることになるのかな！」</p><p>コメントスペースでは、OSKARとランス・アーチャーが「本物のモンスターはどっちだ」と取っ組み合いの乱闘に。直後に始まるタッグリーグへの火種も残りました。</p>",no:'第4試合',type:'モンスターランボー',rule:'',tba:true,
+ {k:'match4',part:['fale','cobb','owens','oskar','archer','zayne','henare','okhan','jake','robbiex'],r:"ロビー・エックスが優勝（14分42秒、最後はジェイク・リーをオーバー・ザ・トップロープ）",ru:"https://www.njpw.co.jp/card-result/677051",rp:"参加したのは10人。ドン・ファレとジェフ・コブの巨漢対決から始まり、チェーズ・オーエンズ、OSKAR、ランス・アーチャー、アレックス・ゼイン、HENARE、グレート-O-カーン、ジェイク・リーとヘビー級が次々に登場。最後に入ってきたのは、ただ1人のジュニアヘビー級、ロビー・エックス。残っていたO-カーンをトップロープ越しに落とし、ジェイク・リーもスワンダイブのミサイルキックで場外へ落として、「モンスター」たちを制しました。<br>しおりの予想は、O-カーンが的中、タイチは外れでした。",bs:"<p><b>ロビー・エックス</b>：「これからは『エクストリーム・モンスター・ジュニアヘビー級』と名乗ることになるのかな！」</p><p>コメントスペースでは、OSKARとランス・アーチャーが「本物のモンスターはどっちだ」と取っ組み合いの乱闘に。直後に始まるタッグリーグへの火種も残りました。</p>",no:'第4試合',type:'モンスターランボー',rule:'',tba:true,
   pt:'シングルマッチから始まって、1分ごとに1人ずつ選手が入ってくる時間差バトルロイヤル。負けた選手から退場し、最後の1人になったら決着。トップロープを越えて場外に落ちても退場です。出場選手と順番は、入場曲で発表されます（参戦人数は未定）。',
   w:'次々に入ってくる選手が誰なのか、入場曲が鳴った瞬間の会場のどよめき'},
  {k:'match5',r:"藤波組の勝ち（9分24秒 上村がライオンズシャイナーで裕二郎から）",ru:"https://www.njpw.co.jp/card-result/677052",rp:"H.O.Tは悪の連係で攻め込みますが、藤波組もひるまず応戦。武知が躍動感あふれるファイトを見せ、藤波さんはドラゴンスクリューを連発。終盤、ウルフと武知が裕二郎に張り手を見舞い、藤波さんも「ドラゴン張り手」！ 棚橋社長の「藤波さんの張り手で伸ばされてほしい」がそのまま実現し、最後は上村のライオンズシャイナーで悪を成敗しました。",bs:"<p><b>藤波</b>：「今のトップの選手を味方にすると刺激される。最高ですよ」。武知には「すごいジャンプ力。相手の頭を飛び越えてたよ」。さらに「もうちょっとリングに上がる回数を増やしたら、IWGPに挑戦しようかな？」と言って、場がシーン…（笑）</p><p><b>上村</b>：ヤングライオンの頃から藤波さんの試合映像で勉強してきた。今日は組めたので、次は闘いたい。</p><p><b>ウルフ</b>：「プロレス界のイケメン4人タッグに招集いただきありがとうございました」。てっきりランボーに呼ばれると思っていたそう。藤波さんの得意技ドラゴンスクリューは、前回の対戦で「インスパイアされました」。</p><p class=\"small\">成田、SANADA、裕二郎、金丸はノーコメント。</p>",tc:"今年も藤波さんが参戦。社長自身も藤波さんから多くを学んだので、一緒に組む武知・ウルフ・上村にもしっかり学んでほしい。反則三昧で暴れているH.O.Tには、全員まとめて藤波さんの張り手で伸ばされてほしい、とのこと。",no:'第5試合',type:'スペシャル8人タッグマッチ',rule:'30分一本勝負',a:['fujinami','uemura','wolf','takechi'],b:['narita','sanada','yujiro','kanemaru'],bn:'H.O.T',
@@ -835,7 +871,8 @@ function renderAll(){
 document.getElementById('matches').innerHTML=M.map(function(m,mi){var mk=m.k;
   var resb=m.r?'<div class="resb">🏆 '+m.r+'</div>':'';var head='<div class="mhead"><span class="mno">'+m.no.toUpperCase()+'</span><span class="mtype">'+m.type+'</span>'+(m.title?'<span class="belt">王座戦</span>':'')+(m.rule?'<span class="mrule">'+m.rule+'</span>':'')+'</div>';
   var body;
-  if(m.tba){body='<div class="tba">出場選手は当日発表</div><div class="side"><span class="teamname">出場しそうな選手（しおり作成者の予想）</span><div class="grid">'+['taichi','okhan'].map(chip).join('')+'</div></div>';}
+  if(m.tba&&m.part){body='<div class="side"><span class="teamname">出場した10人（入場順）</span><div class="grid">'+m.part.map(chip).join('')+'</div></div>';}
+  else if(m.tba){body='<div class="tba">出場選手は当日発表</div><div class="side"><span class="teamname">出場しそうな選手（しおり作成者の予想）</span><div class="grid">'+['taichi','okhan'].map(chip).join('')+'</div></div>';}
   else{body='<div class="vs"><div class="side">'+(m.an?'<span class="teamname">'+m.an+'</span>':'')+m.a.map(chip).join('')+'</div><span class="vsx">VS</span><div class="side r">'+(m.bn?'<span class="teamname">'+m.bn+'</span>':'')+m.b.map(chip).join('')+'</div></div>';}
   var pic=(PH[mk]?'<img class="mpic" src="'+PH[mk]+'" alt="'+m.type+'の画像" loading="lazy">':'')+((ASSETS&&DB)?'<div class="mup"><label class="upbtn sm" for="up-'+mk+'">'+(PH[mk]?'画像を差し替える':'この試合の画像を入れる')+'</label><input type="file" accept="image/png,image/jpeg,image/webp" id="up-'+mk+'" data-up="'+mk+'" hidden>'+(PH[mk]?'<button type="button" class="rmbtn sm" data-rm="'+mk+'">外す</button>':'')+'<span class="small" id="msg-'+mk+'"></span></div>':'');
   return '<article class="match'+(m.title?' title':'')+(m.main?' main':'')+'">'+head+resb+pic+'<div class="mbody">'+body+'<div class="mtext">'+(m.rp?'<h4>試合レポート</h4><p>'+m.rp+'</p><h4>試合後のコメント</h4><div class="bs">'+m.bs+'</div><p class="small"><a href="'+m.ru+'" target="_blank" rel="noopener">新日本公式の試合詳細 ↗</a></p><h4 class="pre">▼ ここからは試合前の見どころ</h4>':'')+'<h4>見どころ</h4><p>'+m.pt+'</p>'+(m.nk?'<h4>nk2🤠的注目選手</h4><div class="nk2">'+m.nk+'</div>':'')+(m.tc?'<h4>棚橋社長の見どころ</h4><p class="tc">'+m.tc+'</p>':'')+'<h4>ここを見て</h4><p>'+m.w+'</p></div></div></article>';
@@ -848,7 +885,8 @@ var order=[
  ['ext',['kiyomiya','masada','takechi'],'他団体からの参戦組。NOAHの清宮、DDTの正田と武知。棚橋社長の「普段とは違う顔合わせ」の主役たちです。',''],
  ['legend',['fujinami'],'新日本の旗揚げメンバーで、棚橋社長の師匠。自身の団体DRADITIONから参戦します。',''],
  ['tw',['axe'],'台湾のPUZZLEプロレスリングから来て、新日本の野毛道場で修業中。今日が新日本デビュー戦です。',''],
- ['cand',['taichi','okhan'],'カードには入っていないけど、モンスターランボーで出てきそうな選手（しおり作成者の予想）。','']];
+ ['rambo',['fale','cobb','owens','oskar','archer','zayne','henare','jake','robbiex'],'モンスターランボーに出場した選手（グレート-O-カーンは上の予想に入っています）。',''],
+ ['cand',['taichi','okhan'],'大会前のしおり作成者の予想。結果は、グレート-O-カーンが的中、タイチは出場しませんでした。','']];
 document.getElementById('units').innerHTML=order.map(function(o){return '<div class="unitblock"><h3 style="--uc:'+css(U[o[0]].c)+'"><i></i>'+U[o[0]].n+'</h3><p class="udesc">'+o[2]+'</p><div class="grid">'+o[1].map(chip).join('')+'</div>'+(o[3]?'<p class="small">今日は出ない主なメンバー：'+o[3]+'（モンスターランボーに出る可能性はあります）</p>':'')+'</div>';}).join('');
 }
 renderAll();
@@ -857,7 +895,7 @@ var dlg=document.getElementById('dlg'),db=document.getElementById('dlg-body');
 function li(a){return a&&a.length?'<ul class="tidy">'+a.map(function(s){return '<li>'+s+'</li>';}).join('')+'</ul>':'';}
 var CUR=null,ASSETS=null,DB=null;
 function open(id){var x=W[id];CUR=id;
-  var match='';M.forEach(function(m){if((m.a||[]).concat(m.b||[]).indexOf(id)>=0)match=m.no+'「'+m.type+'」';});if(!match&&id==='tanahashi')match='大会プロデューサー';
+  var match='';M.forEach(function(m){if((m.a||[]).concat(m.b||[],m.part||[]).indexOf(id)>=0)match=m.no+'「'+m.type+'」';});if(!match&&id==='tanahashi')match='大会プロデューサー';
   db.innerHTML='<div class="dtop">'+av(id)+'<div>'+(NK[id]?'<div class="nk big">'+NK[id]+'</div>':'')+'<h3 id="d-name">'+x.n+'</h3><div class="en">'+x.en+'</div><span class="pill" style="--uc:'+css(U[x.u].c)+'">'+U[x.u].n+'</span> <span class="pill">'+x.org+'</span></div><button class="x" type="button" aria-label="閉じる" id="dlg-x">×</button></div>'
    +'<div class="dsec"><div class="today"><b>今日：</b>'+match+'<br>'+x.t+'</div></div>'
    +(TR[id]?'<div class="dsec"><h4>ここに注目！</h4>'+li(TR[id])+'</div>':'')
